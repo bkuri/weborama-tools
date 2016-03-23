@@ -1,0 +1,32 @@
+#!/bin/coffee
+'use strict'
+
+
+app = require('commander')
+{exec} = require('child_process')
+gm = require('gm')
+{version} = require('./package.json')
+
+LOGO = './weborama_logo.png'
+
+
+app
+  .version version
+  .usage 'placeholder [options] <width> <height> <file>'
+  .option '-b, --background [color]', 'Background color', 'white'
+  .option '-q, --quality [percent]', 'Quality %', 92
+  .arguments '[options] <width> <height> <file>'
+  .parse process.argv
+
+
+gm(LOGO)
+  .gravity 'Center'
+  .extent app.args[0], app.args[1]
+  .quality app.quality
+
+  .write app.args[2], (err) ->
+    console.error('Something happened') if err?
+    exec "feh #{app.args[2]}"
+
+
+console.log "Creating '#{app.args[2]}' (#{app.args[0]}x#{app.args[1]})"
