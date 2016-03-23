@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache",
   "dependencies": {
     "commander": "^2.9.0",
     "gm": "^1.21.1"
