@@ -14,13 +14,21 @@ app
   .version version
   .usage 'placeholder [options] <width> <height> <file>'
   .option '-b, --background [color]', 'Background color', 'white'
+  .option '-g, --gravity <gravity>', 'Where to place the logo inside the image.', /^(NorthWest|North|NorthEast|West|Center|East|SouthWest|South|SouthEast)$/, 'Center'
   .option '-q, --quality [percent]', 'Quality %', 92
   .arguments '[options] <width> <height> <file>'
   .parse process.argv
 
+app.on '--help', ->
+  console.log """
+    Notes:
+      --gravity accepts one of the following: NorthWest|North|NorthEast|West|Center|East|SouthWest|South|SouthEast
+      --background accepts either a color name or a value. See here for more information: http://www.graphicsmagick.org/color.html
+  """
 
 gm(LOGO)
-  .gravity 'Center'
+  .background app.background
+  .gravity app.gravity
   .extent app.args[0], app.args[1]
   .quality app.quality
 

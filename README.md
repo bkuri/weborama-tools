@@ -26,4 +26,10 @@ placeholder placeholder [options] <width> <height> <file>
     -q, --quality [percent]   Quality %
 ```
 
-NOTE: You may have to prefix the command with `coffee` in some platforms.
+Notes
+-----
+
+-	You may have to prefix the command with `coffee` under Windows/OSX (`coffee placeholder...`\)
+-	`--gravity` accepts one of the following values:
+	-	`NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast`
+-	Here's the official color reference: http://www.graphicsmagick.org/color.html
