@@ -1,0 +1,366 @@
+@import 'nib/normalize'
+
+
+center()
+  bottom 0
+  left 0
+  margin auto
+  overflow auto
+  position absolute
+  right 0
+  top 0
+
+
+font(sz=small)
+  font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
+  font-size sz
+
+
+shadow()
+  background #fff url(/img/shadow.gif) repeat-x top
+
+
+*:first-child + html
+  select.select[class]
+    margin 1px 0
+
+
+#bottom
+  display block
+  height 10px
+  margin 0 auto
+  width 650px
+
+
+#error_message
+  background #fff
+  border 1px dotted red
+  margin-bottom 1em
+  padding-left 0
+  padding-right 0
+  padding-top 4px
+  text-align center
+  width 99%
+
+
+#error_message_desc
+  color #000
+  font-size 100%
+  margin 0 0 .8em
+
+  strong
+    background-color #FFDFDF
+    color red
+    padding 2px 3px
+
+
+#error_message_title
+  color #DF0000
+  font-size 125%
+  margin 7px 0 5px
+  padding 0
+
+
+#footer
+  bottom 10px
+  clear both
+  color #999
+  font-size 85%
+  margin 0
+  position absolute
+  text-align center
+  width 100%
+
+
+#form_container
+  background #fff
+  border-radius 2px
+  center()
+  height 450px
+  text-align left
+  width 420px
+
+
+#overlay
+  background-color rgba(0,0,0,0.9)
+  center()
+  visibility hidden
+  z-index 1000
+
+  img
+    center()
+
+
+#top
+  display block
+  height 10px
+  margin 10px auto 0
+  width 650px
+
+
+a
+  border-bottom 1px dotted #999
+  color #999
+  text-decoration none
+
+  &:hover
+    color #c00
+
+
+body
+  font()
+  background #1c1d1f
+  overflow hidden
+
+
+form
+  font()
+  margin 20px 20px 0
+
+  #top, #bottom, h1
+    display none
+
+  ul
+    font-size 100%
+    list-style-type none
+    margin 0
+    padding 0
+    width 100%
+
+    li.first
+      border-top none !important
+      margin-top 0 !important
+      padding-top 0 !important
+
+  li
+    padding 5px 0
+
+    div
+      color #444
+      padding 0 0 8px
+
+      &.left
+        display inline
+        float left
+        width 48%
+
+        .medium
+          width 100%
+
+      &.right
+        display inline
+        float right
+        width 48%
+
+        .medium
+          width 100%
+
+      label
+        clear both
+        color #444
+        display block
+        font-size 9px
+        line-height 9px
+        margin 0
+        padding-top 3px
+
+    span
+      color #444
+      float left
+      margin 0 4px 0 0
+      padding 0 0 8px
+
+      label
+        clear both
+        color #444
+        display block
+        font-size 9px
+        line-height 9px
+        margin 0
+        padding-top 3px
+
+    &.error
+      background-color #FFDFDF !important
+      border-bottom 1px solid #EACBCC
+      border-right 1px solid #EACBCC
+      margin 3px 0
+
+      label
+        color #DF0000 !important
+
+    &.highlighted
+      background-color #fff7c0
+
+      .guidelines
+        visibility visible
+
+  hr
+    display none
+
+  p.error
+    clear both
+    color red
+    font-size 10px
+    font-weight 700
+    margin 0 0 5px
+
+  .guidelines
+    background #f5f5f5
+    border 1px solid #e6e6e6
+    border-radius 2px
+    color #444
+    font-size 80%
+    line-height 130%
+    margin -12% 0 0 0
+    padding 8px
+    position relative
+    right -55%
+    width 40%
+
+    small
+      font-size 105%
+
+  .required
+    color red
+    float none
+    font-weight 700
+
+  .section_break
+    h3
+      font-size 110%
+      font-weight 400
+      line-height 130%
+      margin 0 0 2px
+
+    p
+      font-size 85%
+      margin 0 0 10px
+
+
+h1
+  background-color #C00
+  color white
+  margin 0
+  padding 10px 20px
+
+
+img
+  behavior url(/img/iepngfix.htc)
+  border none
+
+
+input
+  border-radius 2px
+
+  &.button_text
+    overflow visible
+    width 100%
+
+  &.text
+    border-bottom 1px solid #ddd
+    border-left 1px solid #c3c3c3
+    border-right 1px solid #c3c3c3
+    border-top 1px solid #7c7c7c
+    color #333
+    font-size 100%
+    margin 0
+    padding 2px 0
+    shadow()
+
+  &.file
+    color #333
+    font-size 100%
+    margin 0
+    padding 2px 0
+
+  &.currency
+    text-align right
+
+  &.checkbox
+    display block
+    height 13px
+    line-height 1.4em
+    margin 6px 0 0 3px
+    width 13px
+
+  &.radio
+    display block
+    height 13px
+    line-height 1.4em
+    margin 6px 0 0 3px
+    width 13px
+
+  &.small
+    width 25%
+
+  &.medium
+    width 50%
+
+  &.large
+    width 99%
+
+
+label
+  &.description
+    border none
+    color #222
+    display block
+    font-size 95%
+    font-weight 700
+    line-height 150%
+    padding 0 0 1px
+
+  &.choice
+    color #444
+    display block
+    font-size 100%
+    line-height 1.4em
+    margin -1.55em 0 0 25px
+    padding 4px 0 5px
+    width 90%
+
+
+select
+  &.select
+    border-bottom 1px solid #ddd
+    border-left 1px solid #c3c3c3
+    border-right 1px solid #c3c3c3
+    border-top 1px solid #7c7c7c
+    color #333
+    font-size 100%
+    margin 1px 0
+    padding 1px 0 0
+    shadow()
+
+  &.select[class]
+    margin 0
+    padding 1px 0
+
+  &.small
+    width 25%
+
+  &.medium
+    width 50%
+
+  &.large
+    width 100%
+
+
+span.symbol
+  font-size 115%
+  line-height 130%
+
+
+.buttons
+  margin-top 10px
+
+  input
+    background-color #c00
+    border-radius 2px
+    color white
+    font-size 120%
+    height 45px
+
+
+.clear
+  clear both

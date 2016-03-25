@@ -1,18 +1,22 @@
 {
   "name": "weborama-tools",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "",
   "main": "server.coffee",
   "scripts": {
-    "start": "./server.coffee",
+    "start": "node_modules/coffee-script/bin/coffee server.coffee",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
+    "coffee-script": "^1.10.0",
     "commander": "^2.9.0",
     "express": "^4.13.4",
-    "gm": "^1.21.1"
+    "gm": "^1.21.1",
+    "jade": "^1.11.0",
+    "nib": "^1.1.0",
+    "stylus": "^0.54.2"
   }
 }

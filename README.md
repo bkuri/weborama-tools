@@ -8,12 +8,17 @@ Install
 -------
 
 -	Pull a fresh version of this script: `git pull https://github.com/bkuri/weborama-tools.git`
--	Make sure you have coffeescript installed globally: `npm install -g coffeescript`
 -	Install [GraphicsMagick](http://www.graphicsmagick.org/README.html)
--	Install required npm libs (run `npm install` inside the download folder)
+-	Install [Node Package Manager](https://www.npmjs.com/package/npm)
+-	Run `npm install` inside the download folder
 
-Usage
------
+### Server version
+
+Simply run `npm start` inside the download folder and open up a browser tab pointing to http://localhost:8888
+
+### CLI version
+
+A command line version is available inside the `cli` folder. Usage is as follows:
 
 ```sh
 placeholder placeholder [options] <width> <height> <file>
@@ -26,10 +31,8 @@ placeholder placeholder [options] <width> <height> <file>
     -q, --quality [percent]   Quality %
 ```
 
-Notes
------
+#### Notes
 
 -	You may have to prefix the command with `coffee` under Windows/OSX (`coffee placeholder...`\)
--	`--gravity` accepts one of the following values:
-	-	`NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast`
+-	`--gravity` accepts one of the following values: `NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast`
 -	Here's the official color reference: http://www.graphicsmagick.org/color.html
