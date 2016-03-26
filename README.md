@@ -7,7 +7,7 @@ A collection of tools for weborama creatives
 Install
 -------
 
--	Pull a fresh version of this script: `git pull https://github.com/bkuri/weborama-tools.git`
+-	Pull a fresh version of this script: `git clone https://github.com/bkuri/weborama-tools.git`
 -	Install [GraphicsMagick](http://www.graphicsmagick.org/README.html)
 -	Install [Node Package Manager](https://www.npmjs.com/package/npm)
 -	Run `npm install` inside the download folder
