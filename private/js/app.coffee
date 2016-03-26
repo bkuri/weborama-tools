@@ -6,14 +6,15 @@ $ ->
   $overlay = $('#overlay')
 
   $overlay.on 'click', ->
-    $overlay.css visibility: 'hidden'
+    $overlay
+      .css visibility: 'hidden'
+      .children().remove().end()
 
   $('form').on 'submit', (e) ->
     last = $overlay.data('params')
     params = $(@).serialize()
 
     $overlay
-      .children().remove().end()
       .data {params}
       .append $('<img />').attr src: "/api/placeholder?#{params}"
       .css visibility: 'visible'
