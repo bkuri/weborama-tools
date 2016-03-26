@@ -13,7 +13,9 @@ Install
 -	Pull a fresh version of this script: `git clone https://github.com/bkuri/weborama-tools.git`
 -	Run `npm install` inside the download folder
 
-### Server version
+### Web version
+
+\[[https://i.imgur.com/o9Vf2yt.png|alt=screenshot]\]
 
 Simply run `npm start` inside the download folder and open up a browser tab pointing to http://localhost:8888. Make sure that your redis server is running in the background.
 
