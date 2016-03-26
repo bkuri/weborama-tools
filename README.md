@@ -36,6 +36,5 @@ placeholder placeholder [options] <width> <height> <file>
 
 #### Notes
 
--	You may have to prefix the command with `coffee` under Windows/OSX (`coffee placeholder...`\)
 -	`--gravity` accepts one of the following values: `NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast`
--	Here's the official color reference: http://www.graphicsmagick.org/color.html
+-	`--background` accepts valid hex color values and color names. Here's the official color reference: http://www.graphicsmagick.org/color.html
