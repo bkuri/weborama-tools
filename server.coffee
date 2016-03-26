@@ -1,3 +1,4 @@
+#!node_modules/coffee-script/bin/coffee
 'use strict'
 
 
