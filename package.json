@@ -8,7 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "@bkuri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkuri/weborama-tools.git"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "coffee-script": "^1.10.0",

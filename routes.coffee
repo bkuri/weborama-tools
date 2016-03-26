@@ -14,7 +14,7 @@ exports.init = (app, version) ->
     ref.get 'hits', (err, total) ->
 
       res.render 'placeholder',
-        hits: if err? then 0 else total
+        hits: total
         title: 'New placeholder image'
         version: version
 

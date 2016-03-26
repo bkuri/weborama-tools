@@ -18,10 +18,9 @@ $ ->
       .append $('<img />').attr src: "/api/placeholder?#{params}"
       .css visibility: 'visible'
 
-
     e.preventDefault()
     return if (params is last)
-    
+
     hits = $hits.data('hits') + 1
 
     $hits
