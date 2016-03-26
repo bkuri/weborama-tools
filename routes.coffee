@@ -11,14 +11,17 @@ FORMAT = ['JPG', 'image/jpeg']
 
 exports.init = (app, version) ->
   app.get '/', (req, res) ->
-    res.render 'placeholder',
-      title: 'New placeholder image'
-      version: version
+    ref.get 'hits', (err, total) ->
 
-      url:
-        bkuri: 'https://twitter.com/bkuri'
-        colors: 'http://www.graphicsmagick.org/color.html'
-        weborama: 'https://twitter.com/weborama'
+      res.render 'placeholder',
+        hits: if err? then 0 else total
+        title: 'New placeholder image'
+        version: version
+
+        url:
+          bkuri: 'https://twitter.com/bkuri'
+          colors: 'http://www.graphicsmagick.org/color.html'
+          weborama: 'https://twitter.com/weborama'
 
 
   app.get '/api/placeholder', (req, res) ->

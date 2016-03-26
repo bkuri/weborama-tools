@@ -2,15 +2,28 @@
 
 
 $ ->
+  $hits = $('#hits')
   $overlay = $('#overlay')
 
   $overlay.on 'click', ->
     $overlay.css visibility: 'hidden'
 
   $('form').on 'submit', (e) ->
-    e.preventDefault()
+    last = $overlay.data('params')
+    params = $(@).serialize()
 
     $overlay
       .children().remove().end()
-      .append $('<img />').attr src: "/api/placeholder?#{$(@).serialize()}"
+      .data {params}
+      .append $('<img />').attr src: "/api/placeholder?#{params}"
       .css visibility: 'visible'
+
+
+    e.preventDefault()
+    return if (params is last)
+    
+    hits = $hits.data('hits') + 1
+
+    $hits
+      .text hits
+      .data {hits}
