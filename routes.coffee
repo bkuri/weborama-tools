@@ -3,9 +3,8 @@
 
 {compile} = require('coffee-script')
 {readFileSync} = require('fs')
+ref = require('redis').createClient()
 
-Firebase = require('firebase')
-ref = new Firebase('https://shining-inferno-8940.firebaseio.com')
 
 FORMAT = ['JPG', 'image/jpeg']
 
@@ -24,9 +23,9 @@ exports.init = (app, version) ->
 
   app.get '/api/placeholder', (req, res) ->
     try
+      {width, height, color, quality, gravity} = req.query
       # TODO offer more logo types
       type = 'logo1'
-      {width, height, color, quality, gravity} = req.query
 
       (require 'gm')("public/img/#{type}.png")
         .background color
@@ -39,9 +38,7 @@ exports.init = (app, version) ->
             res.status(500).send("Internal Server Error\n#{err}")
             return
 
-          ref.push {version, type, width, height, color, quality, gravity}, ->
-            console.log 'new hit'
-
+          ref.incr 'hits'
           res.set 'Content-Type', FORMAT[1]
           res.send buffer
 
