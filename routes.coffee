@@ -4,8 +4,10 @@
 {compile} = require('coffee-script')
 {readFileSync} = require('fs')
 
+Firebase = require('firebase')
+ref = new Firebase('https://shining-inferno-8940.firebaseio.com')
+
 FORMAT = ['JPG', 'image/jpeg']
-LOGO = 'public/img/weborama_logo.png'
 
 
 exports.init = (app, version) ->
@@ -22,9 +24,11 @@ exports.init = (app, version) ->
 
   app.get '/api/placeholder', (req, res) ->
     try
+      # TODO offer more logo types
+      type = 'logo1'
       {width, height, color, quality, gravity} = req.query
 
-      (require 'gm')(LOGO)
+      (require 'gm')("public/img/#{type}.png")
         .background color
         .gravity gravity
         .extent width, height
@@ -34,6 +38,9 @@ exports.init = (app, version) ->
           if err?
             res.status(500).send("Internal Server Error\n#{err}")
             return
+
+          ref.push {version, type, width, height, color, quality, gravity}, ->
+            console.log 'new hit'
 
           res.set 'Content-Type', FORMAT[1]
           res.send buffer
