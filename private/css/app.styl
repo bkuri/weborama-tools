@@ -18,9 +18,15 @@ font(sz=small)
   font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
   font-size sz
 
+
 *:first-child + html
   select.select[class]
     margin 1px 0
+
+
+::selection
+  background $color_hl
+  color $color_bg
 
 
 #bottom
@@ -79,6 +85,13 @@ font(sz=small)
   text-align left
   width 420px
 
+  h1
+    background-color $color_hl
+    color $color_bg
+    font(2em)
+    margin 0
+    padding 10px 20px
+
 
 #overlay
   background-color rgba(0,0,0,0.9)
@@ -107,9 +120,10 @@ a
 
 
 body
-  background-color #1c1d1f
+  background-color #111
   background-image url(/img/bg.png)
   background-repeat repeat
+  cursor default
   font()
   overflow hidden
 
@@ -234,14 +248,6 @@ form
       margin 0 0 10px
 
 
-h1
-  background-color $color_hl
-  color $color_bg
-  font(2em)
-  margin 0
-  padding 10px 20px
-
-
 img
   behavior url(/img/iepngfix.htc)
   border none
@@ -263,6 +269,7 @@ input
     padding 3px 0 1px 4px
     width 50%
 
+
 label
   &.description
     border none
@@ -283,11 +290,24 @@ label
     width 90%
 
 
+nav
+  nav 1, $color_hl, $color_bg, true
+
+  a:hover
+    color $color_bg !important
+
+  h1
+    padding 12px
+
+  ul
+    padding 15px 0 13px 0
+
 select
   &.select
     input $color_hl
     padding 2px 0 0 0
     width 51%
+
 
 span.symbol
   font-size 115%
