@@ -2,6 +2,7 @@
 
 
 {compile} = require('coffee-script')
+{memoize} = require('lodash')
 {readFileSync} = require('fs')
 ref = require('redis').createClient()
 
@@ -50,7 +51,7 @@ exports.init = (app, version) ->
       res.status(400).send("Bad Request\n#{JSON.stringify req.query}")
 
 
-  app.get '/js/app.js', (req, res) ->
+  app.get '/js/app.js', memoize (req, res) ->
     file = readFileSync("#{__dirname}/private/js/app.coffee", 'ascii')
 
     res.header 'Content-Type', 'application/x-javascript'

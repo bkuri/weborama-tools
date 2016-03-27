@@ -2,8 +2,8 @@
 'use strict'
 
 
+axis = require('axis')
 express = require('express')
-nib = require('nib')
 routes = require('./routes')
 stylus = require('stylus')
 {version} = require('./package.json')
@@ -15,7 +15,7 @@ compile = (str, path) ->
   stylus(str)
     .set 'filename', path
     .set 'compress', yes
-    .use nib()
+    .use axis()
 
 app.set 'views', "#{__dirname}/private/views"
 app.set 'view engine', 'jade'

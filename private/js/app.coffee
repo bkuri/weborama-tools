@@ -27,3 +27,10 @@ $ ->
     $hits
       .text hits
       .data {hits}
+
+  $('input[type=text], input[type=number]').on 'focus', ->
+    $(@).select()
+
+  $('input[type=range]').on 'change', (e) ->
+    $me = $(@)
+    $me.prev('label').text("Quality (#{$me.val()}%)")

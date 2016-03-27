@@ -8,7 +8,7 @@ html
     script(src='/js/app.js')
     title= title
 
-    #overlay
+    #overlay.hidden
     
     #form_container
       h1= title
@@ -18,15 +18,14 @@ html
           li
             label.description(for='e1') Width (px)
 
-            div
-              input#e1.element.text.medium(
-                maxlength='5'
-                min='25'
-                name='width'
-                required
-                type='number'
-                value='450'
-              )
+            input#e1.element.text(
+              maxlength='5'
+              min='25'
+              name='width'
+              required
+              type='number'
+              value='450'
+            )
 
             p.guidelines
               small Width of the background rectangle in pixels.
@@ -34,15 +33,14 @@ html
           li
             label.description(for='e2') Height (px)
 
-            div
-              input#e2.element.text.medium(
-                maxlength='5'
-                min='25'
-                name='height'
-                required
-                type='number'
-                value='150'
-              )
+            input#e2.element.text(
+              maxlength='5'
+              min='25'
+              name='height'
+              required
+              type='number'
+              value='150'
+            )
 
             p.guidelines
               small Height of the background rectangle in pixels.
@@ -50,13 +48,12 @@ html
           li
             label.description(for='e3') Background color
 
-            div
-              input#e3.element.text.medium(
-                maxlength='15'
-                name='color'
-                type='text'
-                value='#DCDCDC'
-              )
+            input#e3.element.text(
+              maxlength='15'
+              name='color'
+              type='text'
+              value='#DCDCDC'
+            )
               
             p.guidelines
               small
@@ -67,32 +64,30 @@ html
           li
             label.description(for='e4') Gravity
 
-            div
-              select#e4.element.select.medium(name='gravity')
-                option(value='NorthWest') NorthWest
-                option(value='North') North
-                option(value='NorthEast') NorthEast
-                option(value='West') West
-                option(value='Center' selected) Center
-                option(value='East') East
-                option(value='SouthWest') SouthWest
-                option(value='South') South
-                option(value='SouthEast') SouthEast
+            select#e4.element.select(name='gravity')
+              option(value='NorthWest') NorthWest
+              option(value='North') North
+              option(value='NorthEast') NorthEast
+              option(value='West') West
+              option(value='Center' selected) Center
+              option(value='East') East
+              option(value='SouthWest') SouthWest
+              option(value='South') South
+              option(value='SouthEast') SouthEast
 
             p.guidelines
               small Where the logo should be placed relative to the image.
 
           li
-            label.description(for='e5') Quality (%)
+            label.description(for='e5') Quality (90%)
 
-            div
-              input#e5.element.text.medium(
-                max='100'
-                min='25'
-                name='quality'
-                type='number'
-                value='90'
-              )
+            input#e5.element(
+              max='100'
+              min='25'
+              name='quality'
+              type='range'
+              value='90'
+            )
 
             p.guidelines
               small Lower values produce smaller files, while higher values tend to look better.
