@@ -10,7 +10,7 @@ ref = require('redis').createClient()
 
 COLOR = '#DCDCDC'
 FORMAT = ['JPG', 'image/jpeg']
-HEIGHT = 150
+HEIGHT = 160
 QUALITY = 85
 WIDTH = 960
 
@@ -32,6 +32,9 @@ exports.init = (app, version) ->
           bkuri: 'https://twitter.com/bkuri'
           colors: 'http://www.graphicsmagick.org/color.html'
           weborama: 'https://twitter.com/weborama'
+
+      return
+    return
 
 
   app.get '/api/placeholder', (req, res) ->
@@ -59,9 +62,12 @@ exports.init = (app, version) ->
       console.error err
       res.status(400).send("Bad Request\n#{JSON.stringify req.query}")
 
+    return
+
 
   app.get '/js/app.js', memoize (req, res) ->
     file = readFileSync("#{__dirname}/private/js/app.coffee", 'ascii')
 
     res.header 'Content-Type', 'application/x-javascript'
     res.send compile(file)
+    return

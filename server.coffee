@@ -14,7 +14,7 @@ app = express()
 
 
 compile = (str, path) ->
-  stylus(str)
+  return stylus(str)
     .set 'filename', path
     .set 'compress', yes
     .use axis()
@@ -28,6 +28,7 @@ app.use (req, res, next) ->
     res.setHeader('Cache-Control', 'public, max-age=86400')
 
   next()
+  return
 
 app.use stylus.middleware Object.assign {compile},
   dest: "#{__dirname}/public/css"
