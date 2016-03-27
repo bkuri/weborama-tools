@@ -28,8 +28,9 @@ $ ->
       .text hits
       .data {hits}
 
-  $('input.text').on 'focus', ->
-    $(@).select()
+  $('input.text')
+    .on 'focus', -> $(@).select()
+    .first().focus()
 
   $('input[type=range]').on 'change', (e) ->
     $me = $(@)

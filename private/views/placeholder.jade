@@ -41,7 +41,7 @@ html
               name='width'
               required
               type='number'
-              value='450'
+              value=width
             )
 
             p: small Width of the background rectangle in pixels.
@@ -55,7 +55,7 @@ html
               name='height'
               required
               type='number'
-              value='150'
+              value=height
             )
 
             p: small Height of the background rectangle in pixels.
@@ -67,7 +67,7 @@ html
               maxlength='15'
               name='color'
               type='text'
-              value='#DCDCDC'
+              value=color
             )
               
             p: small
@@ -79,7 +79,7 @@ html
             label(for='e4') Gravity
 
             select#e4(name='gravity')
-              option(value='Center' selected) Center
+              option(value='Center') Center
               option(value='North') North
               option(value='NorthWest') NorthWest
               option(value='West') West
@@ -92,14 +92,14 @@ html
             p: small Where the logo should be placed relative to the image.
 
           li
-            label(for='e5') Quality (90%)
+            label(for='e5') Quality (!{quality}%)
 
             input#e5(
               max='100'
               min='25'
               name='quality'
               type='range'
-              value='90'
+              value=quality
             )
 
             p: small Lower values produce smaller files, while higher values tend to look better.

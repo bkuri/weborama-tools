@@ -8,7 +8,11 @@ minify = require('express-minify')
 ref = require('redis').createClient()
 
 
+COLOR = '#DCDCDC'
 FORMAT = ['JPG', 'image/jpeg']
+HEIGHT = 150
+QUALITY = 85
+WIDTH = 960
 
 
 exports.init = (app, version) ->
@@ -16,9 +20,13 @@ exports.init = (app, version) ->
     ref.get 'hits', (err, total) ->
 
       res.render 'placeholder',
+        color: COLOR
+        height: HEIGHT
         hits: total
+        quality: QUALITY
         title: 'Placeholder'
         version: version
+        width: WIDTH
 
         url:
           bkuri: 'https://twitter.com/bkuri'
