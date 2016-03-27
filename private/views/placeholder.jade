@@ -30,14 +30,28 @@ html
     #form_container
       h1= title
         a#reset(href='#')
-          img(src='/img/reset.png')
+          img(src='/img/reset.png' width='21' height='22')
 
       form(method='get' action='/api/placeholder')
         ul
           li
-            label(for='e1') Width (px)
+            label(for='e1') Logo
 
-            input#e1.text(
+            select#e1(name='logo')
+              option(value='logo1') Weborama
+              option(value='logo2') WARM 1
+              option(value='logo3') WARM 2
+              option(value='logo4') Icon
+
+            p: small
+              | Available logos can be found
+              a#logos(href=url.logos)  here
+              | .
+
+          li
+            label(for='e2') Width (px)
+
+            input#e2.text(
               maxlength='5'
               min='25'
               name='width'
@@ -49,9 +63,9 @@ html
             p: small Width of the background rectangle in pixels.
 
           li
-            label(for='e2') Height (px)
+            label(for='e3') Height (px)
 
-            input#e2.text(
+            input#e3.text(
               maxlength='5'
               min='25'
               name='height'
@@ -63,9 +77,9 @@ html
             p: small Height of the background rectangle in pixels.
 
           li
-            label(for='e3') Background color
+            label(for='e4') Background color
 
-            input#e3.text(
+            input#e4.text(
               maxlength='15'
               name='color'
               type='text'
@@ -78,9 +92,9 @@ html
               | are supported.
 
           li
-            label(for='e4') Gravity
+            label(for='e5') Gravity
 
-            select#e4(name='gravity')
+            select#e5(name='gravity')
               option(value='Center') Center
               option(value='North') North
               option(value='NorthWest') NorthWest
@@ -94,9 +108,9 @@ html
             p: small Where the logo should be placed relative to the image.
 
           li
-            label(for='e5') Quality (!{quality}%)
+            label(for='e6') Quality (!{quality}%)
 
-            input#e5(
+            input#e6(
               max='100'
               min='25'
               name='quality'
@@ -110,10 +124,10 @@ html
             input(type='submit' value='Generate')
 
     #footer
-      | v!{version} // Made by 
-      a(href=url.bkuri target='_blank') @bkuri
-      |  for 
+      | v!{version} // Made for 
       a(href=url.weborama target='_blank') @weborama
+      |  by 
+      a(href=url.bkuri target='_blank') @bkuri
       |  // 
       span#hits(data-hits=hits) !{hits}
       |  unique images generated

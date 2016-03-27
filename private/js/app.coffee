@@ -1,13 +1,19 @@
 'use strict'
 
 
+$form = $('form')
+$hits = $('#hits')
+$overlay = $('#overlay')
+$range = $('input[type=range]')
+
+
+$.fn.placeImage = (src) ->
+  return $(@)
+    .append $('<img />').attr {src}
+    .css visibility: 'visible'
+
+
 $ ->
-  $form = $('form')
-  $hits = $('#hits')
-  $overlay = $('#overlay')
-  $range = $('input[type=range]')
-
-
   $overlay.on 'click', ->
     $overlay
       .css visibility: 'hidden'
@@ -22,8 +28,7 @@ $ ->
 
     $overlay
       .data {params}
-      .append $('<img />').attr src: "/api/placeholder?#{params}"
-      .css visibility: 'visible'
+      .placeImage "/api/placeholder?#{params}"
 
     e.preventDefault()
     return if (params is last)
@@ -41,6 +46,12 @@ $ ->
     $me = $(@)
 
     $me.prev('label').text("Quality (#{$me.val()}%)")
+    return
+
+
+  $('#logos').on 'click', (e) ->
+    $overlay.placeImage $(@).attr('href')
+    e.preventDefault()
     return
 
 

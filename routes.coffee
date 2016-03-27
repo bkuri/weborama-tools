@@ -10,7 +10,7 @@ ref = require('redis').createClient()
 
 COLOR = '#DCDCDC'
 FORMAT = ['JPG', 'image/jpeg']
-HEIGHT = 160
+HEIGHT = 180
 QUALITY = 85
 WIDTH = 960
 
@@ -31,6 +31,7 @@ exports.init = (app, version) ->
         url:
           bkuri: 'https://twitter.com/bkuri'
           colors: 'http://www.graphicsmagick.org/color.html'
+          logos: '/img/logos.jpg'
           weborama: 'https://twitter.com/weborama'
 
       return
@@ -39,11 +40,9 @@ exports.init = (app, version) ->
 
   app.get '/api/placeholder', (req, res) ->
     try
-      {width, height, color, quality, gravity} = req.query
-      # TODO offer more logo types
-      type = 'logo1'
+      {logo, width, height, color, quality, gravity} = req.query
 
-      (require 'gm')("public/img/#{type}.png")
+      (require 'gm')("public/img/#{logo}.png")
         .background color
         .gravity gravity
         .extent width, height
