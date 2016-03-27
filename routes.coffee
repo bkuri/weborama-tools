@@ -3,6 +3,7 @@
 
 {compile} = require('coffee-script')
 {memoize} = require('lodash')
+minify = require('express-minify')
 {readFileSync} = require('fs')
 ref = require('redis').createClient()
 
@@ -16,7 +17,7 @@ exports.init = (app, version) ->
 
       res.render 'placeholder',
         hits: total
-        title: 'New placeholder image'
+        title: 'Placeholder'
         version: version
 
         url:
