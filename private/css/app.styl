@@ -84,17 +84,10 @@ form
   font()
   margin 20px 20px 0
 
-  ul
-    font-size 100%
-    list-style-type none
-    margin 0
-    padding 0
-    width 100%
-
   li
     padding 0.15rem 0
 
-  .guidelines
+  p
     font(smaller)
     line-height 1.2
     margin -12% 0 0 0
@@ -105,6 +98,13 @@ form
 
     small
       font-size 105%
+
+  ul
+    font-size 100%
+    list-style-type none
+    margin 0
+    padding 0
+    width 100%
 
 
 img
@@ -118,7 +118,7 @@ input
   &[type=range]
     range-input($color_hl, 50%, 15px, 2px, $color_hl)
 
-  &.button_text
+  &[type=submit]
     click-inset()
     overflow visible
 
@@ -130,14 +130,13 @@ input
 
 
 label
-  &.description
-    border none
-    color #222
-    font-size 95%
-    font-weight 700
-    label block
-    line-height 2.2
-    padding 0 0 1px
+  border none
+  color #222
+  font-size 95%
+  font-weight 700
+  label block
+  line-height 2.2
+  padding 0 0 1px
 
 
 nav
@@ -153,10 +152,9 @@ nav
     padding 15px 0 13px 0
 
 select
-  &.select
-    input $color_hl
-    padding 2px 0 0 0
-    width 51%
+  input $color_hl
+  padding 2px 0 0 0
+  width 51%
 
 
 .buttons

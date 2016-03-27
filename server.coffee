@@ -23,9 +23,6 @@ express.static.mime.define
   'text/coffeescript': ['coffee']
   'text/stylus': ['styl']
 
-app.set 'views', "#{__dirname}/private/views"
-app.set 'view engine', 'jade'
-
 app.use (req, res, next) ->
   if (req.url is '/') or req.url.match(/(css|ico|js|json|png|svg|xml)$/)
     res.setHeader('Cache-Control', 'public, max-age=86400')
@@ -39,6 +36,9 @@ app.use stylus.middleware Object.assign {compile},
 app.use compression()
 app.use minify()
 app.use express.static("#{__dirname}/public")
+
+app.set 'views', "#{__dirname}/private/views"
+app.set 'view engine', 'jade'
 
 routes.init(app, version)
 app.listen (process.env.PORT or 8888)
