@@ -19,50 +19,9 @@ font(sz=small)
   font-size sz
 
 
-*:first-child + html
-  select.select[class]
-    margin 1px 0
-
-
 ::selection
   background $color_hl
   color $color_bg
-
-
-#bottom
-  display block
-  height 10px
-  margin 0 auto
-  width 650px
-
-
-#error_message
-  background $color_bg
-  border 1px dotted $color_hl
-  margin-bottom 1em
-  padding-left 0
-  padding-right 0
-  padding-top 4px
-  text-align center
-  width 99%
-
-
-#error_message_desc
-  color #000
-  font-size 100%
-  margin 0 0 .8em
-
-  strong
-    background-color #FFDFDF
-    color $color_hl
-    padding 2px 3px
-
-
-#error_message_title
-  color $color_hl
-  font-size 125%
-  margin 7px 0 5px
-  padding 0
 
 
 #footer
@@ -103,13 +62,6 @@ font(sz=small)
     center()
 
 
-#top
-  display block
-  height 10px
-  margin 10px auto 0
-  width 650px
-
-
 a
   border-bottom 1px dotted #999
   color #999
@@ -132,9 +84,6 @@ form
   font()
   margin 20px 20px 0
 
-  #top, #bottom, h1
-    display none
-
   ul
     font-size 100%
     list-style-type none
@@ -142,82 +91,8 @@ form
     padding 0
     width 100%
 
-    li.first
-      border-top none !important
-      margin-top 0 !important
-      padding-top 0 !important
-
   li
     padding 0.15rem 0
-
-    div
-      color #444
-      padding 0 0 8px
-
-      &.left
-        display inline
-        float left
-        width 48%
-
-        .medium
-          width 100%
-
-      &.right
-        display inline
-        float right
-        width 48%
-
-        .medium
-          width 100%
-
-      label
-        clear both
-        color #444
-        display block
-        font-size 9px
-        line-height 9px
-        margin 0
-        padding-top 3px
-
-    span
-      color #444
-      float left
-      margin 0 4px 0 0
-      padding 0 0 8px
-
-      label
-        clear both
-        color #444
-        display block
-        font-size 9px
-        line-height 9px
-        margin 0
-        padding-top 3px
-
-    &.error
-      background-color #FFDFDF !important
-      border-bottom 1px solid #EACBCC
-      border-right 1px solid #EACBCC
-      margin 3px 0
-
-      label
-        color $color_hl !important
-
-    &.highlighted
-      background-color #fff7c0
-
-      .guidelines
-        visibility visible
-
-  hr
-    display none
-
-  p.error
-    clear both
-    color $color_hl
-    font-size 10px
-    font-weight 700
-    margin 0 0 5px
 
   .guidelines
     font(smaller)
@@ -230,22 +105,6 @@ form
 
     small
       font-size 105%
-
-  .required
-    color $color_hl
-    float none
-    font-weight 700
-
-  .section_break
-    h3
-      font-size 110%
-      font-weight 400
-      line-height 130%
-      margin 0 0 2px
-
-    p
-      font-size 85%
-      margin 0 0 10px
 
 
 img
@@ -280,15 +139,6 @@ label
     line-height 2.2
     padding 0 0 1px
 
-  &.choice
-    color #444
-    display block
-    font-size 100%
-    line-height 1.4em
-    margin -1.55em 0 0 25px
-    padding 4px 0 5px
-    width 90%
-
 
 nav
   nav 1, $color_hl, $color_bg, true
@@ -309,16 +159,7 @@ select
     width 51%
 
 
-span.symbol
-  font-size 115%
-  line-height 130%
-
-
 .buttons
   input
     button $color_hl, 'large'
     width 100%
-
-
-.clear
-  clear both

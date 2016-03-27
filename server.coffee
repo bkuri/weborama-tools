@@ -26,6 +26,12 @@ express.static.mime.define
 app.set 'views', "#{__dirname}/private/views"
 app.set 'view engine', 'jade'
 
+app.use (req, res, next) ->
+  if (req.url is '/') or req.url.match(/(css|js|png)$/)
+    res.setHeader('Cache-Control', 'public, max-age=86400')
+
+  next()
+
 app.use stylus.middleware Object.assign {compile},
   dest: "#{__dirname}/public/css"
   src: "#{__dirname}/private/css"
