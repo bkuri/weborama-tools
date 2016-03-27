@@ -27,7 +27,7 @@ app.set 'views', "#{__dirname}/private/views"
 app.set 'view engine', 'jade'
 
 app.use (req, res, next) ->
-  if (req.url is '/') or req.url.match(/(css|js|png)$/)
+  if (req.url is '/') or req.url.match(/(css|ico|js|json|png|svg|xml)$/)
     res.setHeader('Cache-Control', 'public, max-age=86400')
 
   next()
