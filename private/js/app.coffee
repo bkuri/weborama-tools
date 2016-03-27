@@ -8,7 +8,7 @@ $ ->
   $overlay.on 'click', ->
     $overlay
       .css visibility: 'hidden'
-      .children().remove().end()
+      .children().remove()
 
   $('form').on 'submit', (e) ->
     last = $overlay.data('params')
@@ -28,7 +28,7 @@ $ ->
       .text hits
       .data {hits}
 
-  $('input[type=text], input[type=number]').on 'focus', ->
+  $('input.text').on 'focus', ->
     $(@).select()
 
   $('input[type=range]').on 'change', (e) ->
