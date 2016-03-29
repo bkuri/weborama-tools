@@ -1,135 +1,102 @@
-doctype html
+extends ./layout
 
-html
-  head
-    title= title
-    
-    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
-    meta(name='msapplication-TileColor' content='#930821')
-    meta(name='theme-color' content='#930821')
+block body
+  #form_container
+    h1= title
+      a#reset(href='#')
+        img(src='/img/reset.png' width='21' height='22')
 
-    link(rel='apple-touch-icon' sizes='57x57' href='/apple-touch-icon-57x57.png')
-    link(rel='apple-touch-icon' sizes='60x60' href='/apple-touch-icon-60x60.png')
-    link(rel='apple-touch-icon' sizes='72x72' href='/apple-touch-icon-72x72.png')
-    link(rel='apple-touch-icon' sizes='76x76' href='/apple-touch-icon-76x76.png')
-    link(rel='icon' type='image/png' href='/favicon-16x16.png' sizes='16x16')
-    link(rel='icon' type='image/png' href='/favicon-32x32.png' sizes='32x32')
-    link(rel='manifest' href='/manifest.json')
-    link(rel='mask-icon' href='/safari-pinned-tab.svg' color='#930821')
-    link(rel='stylesheet' type='text/css' href='/css/app.css' media='all')
-
-  body
-    #overlay
-    
-    nav
-      h1 weborama.tech
-      
+    form(method='get' action='/api/placeholder')
       ul
-        li: a(href='/') Placeholder
-    
-    #form_container
-      h1= title
-        a#reset(href='#')
-          img(src='/img/reset.png' width='21' height='22')
+        li
+          label(for='e1') Logo
 
-      form(method='get' action='/api/placeholder')
-        ul
-          li
-            label(for='e1') Logo
+          select#e1(name='logo')
+            option(value='logo1') Weborama
+            option(value='logo2') WARM 1
+            option(value='logo3') WARM 2
+            option(value='logo4') Icon
 
-            select#e1(name='logo')
-              option(value='logo1') Weborama
-              option(value='logo2') WARM 1
-              option(value='logo3') WARM 2
-              option(value='logo4') Icon
+          p: small
+            | Available logos can be found
+            a#logos(href=url.logos)  here
+            | .
 
-            p: small
-              | Available logos can be found
-              a#logos(href=url.logos)  here
-              | .
+        li
+          label(for='e2') Width (px)
 
-          li
-            label(for='e2') Width (px)
+          input#e2.text(
+            maxlength='5'
+            min='25'
+            name='width'
+            required
+            type='number'
+            value=width
+          )
 
-            input#e2.text(
-              maxlength='5'
-              min='25'
-              name='width'
-              required
-              type='number'
-              value=width
-            )
+          p: small Width of the background rectangle in pixels.
 
-            p: small Width of the background rectangle in pixels.
+        li
+          label(for='e3') Height (px)
 
-          li
-            label(for='e3') Height (px)
+          input#e3.text(
+            maxlength='5'
+            min='25'
+            name='height'
+            required
+            type='number'
+            value=height
+          )
 
-            input#e3.text(
-              maxlength='5'
-              min='25'
-              name='height'
-              required
-              type='number'
-              value=height
-            )
+          p: small Height of the background rectangle in pixels.
 
-            p: small Height of the background rectangle in pixels.
+        li
+          label(for='e4') Background color
 
-          li
-            label(for='e4') Background color
+          input#e4.text(
+            maxlength='15'
+            name='color'
+            type='text'
+            value=color
+          )
+            
+          p: small
+            | Both hexadecimal values and 
+            a(href=url.colors target='_blank') color names 
+            | are supported.
 
-            input#e4.text(
-              maxlength='15'
-              name='color'
-              type='text'
-              value=color
-            )
-              
-            p: small
-              | Both hexadecimal values and 
-              a(href=url.colors target='_blank') color names 
-              | are supported.
+        li
+          label(for='e5') Gravity
 
-          li
-            label(for='e5') Gravity
+          select#e5(name='gravity')
+            option(value='Center') Center
+            option(value='North') North
+            option(value='NorthWest') NorthWest
+            option(value='West') West
+            option(value='SouthWest') SouthWest
+            option(value='South') South
+            option(value='SouthEast') SouthEast
+            option(value='East') East
+            option(value='NorthEast') NorthEast
 
-            select#e5(name='gravity')
-              option(value='Center') Center
-              option(value='North') North
-              option(value='NorthWest') NorthWest
-              option(value='West') West
-              option(value='SouthWest') SouthWest
-              option(value='South') South
-              option(value='SouthEast') SouthEast
-              option(value='East') East
-              option(value='NorthEast') NorthEast
+          p: small Where the logo should be placed relative to the image.
 
-            p: small Where the logo should be placed relative to the image.
+        li
+          label(for='e6') Quality (!{quality}%)
 
-          li
-            label(for='e6') Quality (!{quality}%)
+          input#e6(
+            max='100'
+            min='25'
+            name='quality'
+            type='range'
+            value=quality
+          )
 
-            input#e6(
-              max='100'
-              min='25'
-              name='quality'
-              type='range'
-              value=quality
-            )
+          p: small Lower values produce smaller files, while higher values tend to look better.
 
-            p: small Lower values produce smaller files, while higher values tend to look better.
+        li.buttons
+          input(type='submit' value='Generate')
 
-          li.buttons
-            input(type='submit' value='Generate')
-
-    #footer
-      | v!{version} // Made for 
-      a(href=url.weborama target='_blank') @weborama
-      |  by 
-      a(href=url.bkuri target='_blank') @bkuri
-      |  // 
-      span#hits(data-hits=hits) !{hits}
-      |  unique images generated
-      script(defer src='//media.adrcdn.com/scripts/external/jquery/jquery-2.1.3.min.js')
-      script(defer src='/js/app.js')
+block footer
+    span#hits(data-hits=hits) !{hits}
+    |  unique images generated
