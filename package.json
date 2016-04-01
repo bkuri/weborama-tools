@@ -1,6 +1,6 @@
 {
   "name": "weborama-tools",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "",
   "main": "server.coffee",
   "scripts": {
@@ -24,6 +24,7 @@
     "gm": "^1.21.1",
     "jade": "^1.11.0",
     "lodash": "^4.6.1",
+    "node-zip": "^1.1.1",
     "redis": "^2.5.3",
     "stylus": "^0.54.2"
   }
