@@ -1,6 +1,9 @@
 'use strict'
 
 
+chroma = require('chroma-js')
+
+
 rgbToHex = (r, g, b) ->
   hex = (c) ->
     val = c.toString(16)
@@ -9,8 +12,10 @@ rgbToHex = (r, g, b) ->
   return "##{ hex(r) }#{ hex(g) }#{ hex(b) }"
 
 
-invert = (rgb) ->
+invert = (color) ->
+    rgb = chroma(color).rgb()
     rgb[i] = (if i is 3 then 1 else 255) - c for c, i in rgb
+
     return "rgb(#{ rgb.join(',') })"
 
 

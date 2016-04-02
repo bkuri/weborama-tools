@@ -1,7 +1,6 @@
 'use strict'
 
 
-chroma = require('chroma-js')
 {compile} = require('coffee-script')
 gm = require('gm')
 {invert} = require('./color')
@@ -49,7 +48,7 @@ exports.init = (app, version) ->
         .background bcolor
         .gravity gravity
         .extent (width - 4), (height - 4)
-        .borderColor invert(chroma(bcolor).rgb())
+        .borderColor invert(bcolor)
         .border 2, 2
         .quality quality
 
