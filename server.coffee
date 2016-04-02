@@ -6,7 +6,7 @@ axis = require('axis')
 compression = require('compression')
 express = require('express')
 minify = require('express-minify')
-routes = require('./routes')
+routes = require('./lib/routes')
 stylus = require('stylus')
 {version} = require('./package.json')
 
