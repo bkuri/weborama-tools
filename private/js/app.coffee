@@ -3,6 +3,7 @@
 
 $form = $('form')
 $hits = $('#hits')
+$logo = $('select[name=logo]')
 $overlay = $('#overlay')
 $range = $('input[type=range]')
 
@@ -58,16 +59,15 @@ $ ->
   $('#reset').on 'click', (e) ->
     $form.trigger 'reset'
     $range.trigger 'change'
-    $('input').first().focus()
+    $logo.focus()
     e.preventDefault()
     return
 
 
-  $('input.text')
-    .on 'focus', ->
-      $(@).select()
-      return
-    .first().focus()
+  $('input.text').on 'focus', ->
+    $(@).select()
+    return
 
 
+  $logo.focus()
   return
