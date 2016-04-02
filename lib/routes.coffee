@@ -63,8 +63,7 @@ exports.init = (app, version) ->
           return
 
     catch err
-      console.error err
-      res.status(400).send("Bad Request\n#{JSON.stringify req.query}")
+      res.status(400).send("Bad Request\n#{err}\n#{JSON.stringify req.query}")
 
     return
 

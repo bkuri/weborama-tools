@@ -1,19 +1,5 @@
 {
-  "name": "weborama-tools",
-  "version": "0.1.18",
-  "description": "",
-  "main": "server.coffee",
-  "scripts": {
-    "start": "node_modules/coffee-script/bin/coffee server.coffee",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
   "author": "@bkuri",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bkuri/weborama-tools.git"
-  },
-  "license": "Apache-2.0",
   "dependencies": {
     "axis": "^0.6.1",
     "chroma-js": "^1.1.1",
@@ -27,5 +13,19 @@
     "lodash": "^4.6.1",
     "redis": "^2.5.3",
     "stylus": "^0.54.2"
-  }
+  },
+  "description": "Tools for weborama creatives",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "main": "server.coffee",
+  "name": "weborama-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkuri/weborama-tools.git"
+  },
+  "scripts": {
+    "start": "node_modules/coffee-script/bin/coffee server.coffee",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.18"
 }
