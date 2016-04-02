@@ -3,7 +3,7 @@
 
 chroma = require('chroma-js')
 {compile} = require('coffee-script')
-{hsv} = require('color-system')
+gm = require('gm')
 {invert} = require('./color')
 {memoize} = require('lodash')
 minify = require('express-minify')
@@ -11,7 +11,7 @@ minify = require('express-minify')
 ref = require('redis').createClient()
 
 
-COLOR = '#DCDCDC'
+BCOLOR = '#DCDCDC'
 FORMAT = ['JPG', 'image/jpeg']
 HEIGHT = 180
 QUALITY = 85
@@ -23,7 +23,7 @@ exports.init = (app, version) ->
     ref.get 'hits', (err, total) ->
 
       res.render 'placeholder',
-        color: COLOR
+        bcolor: BCOLOR
         height: HEIGHT
         hits: total
         quality: QUALITY
@@ -43,16 +43,14 @@ exports.init = (app, version) ->
 
   app.get '/api/placeholder', (req, res) ->
     try
-      {logo, width, height, color, quality, gravity} = req.query
+      {logo, width, height, bcolor, quality, gravity} = req.query
 
-      rgb = chroma(color).rgb()
-
-      (require 'gm')("public/img/#{logo}.png")
-        .background color
+      gm("public/img/#{logo}.png")
+        .background bcolor
         .gravity gravity
-        .extent width, height
-        .border 1, 1
-        .borderColor "\"#{invert(rgb)}\""
+        .extent (width - 4), (height - 4)
+        .borderColor invert(chroma(bcolor).rgb())
+        .border 2, 2
         .quality quality
 
         .toBuffer FORMAT[0], (err, buffer) ->
@@ -63,6 +61,7 @@ exports.init = (app, version) ->
           ref.incr 'hits'
           res.set 'Content-Type', FORMAT[1]
           res.send buffer
+          return
 
     catch err
       console.error err

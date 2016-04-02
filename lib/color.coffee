@@ -2,17 +2,16 @@
 
 
 rgbToHex = (r, g, b) ->
-  c2h = (c) ->
-    hex = c.toString(16)
-    return if (hex.length is 1) then "0#{hex}" else hex
+  hex = (c) ->
+    val = c.toString(16)
+    return if (val.length is 1) then "0#{val}" else val
 
-  return "##{c2h(r)}#{c2h(g)}#{c2h(b)}"
+  return "##{ hex(r) }#{ hex(g) }#{ hex(b) }"
 
 
-invert = (rgb...) ->
-    rgb = rgb.join(',').replace(/rgb\(|\)|rgba\(|\)|\s/gi, '').split(',')
+invert = (rgb) ->
     rgb[i] = (if i is 3 then 1 else 255) - c for c, i in rgb
-    return rgbToHex(rgb[0], rgb[1], rgb[2])
+    return "rgb(#{ rgb.join(',') })"
 
 
 exports.invert = invert
