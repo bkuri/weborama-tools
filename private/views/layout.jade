@@ -1,0 +1,42 @@
+doctype html
+
+- color = '#930821'
+
+html
+  head
+    title= title
+    
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(name='msapplication-TileColor' content=color)
+    meta(name='theme-color' content=color)
+
+    link(rel='apple-touch-icon' sizes='57x57' href='/apple-touch-icon-57x57.png')
+    link(rel='apple-touch-icon' sizes='60x60' href='/apple-touch-icon-60x60.png')
+    link(rel='apple-touch-icon' sizes='72x72' href='/apple-touch-icon-72x72.png')
+    link(rel='apple-touch-icon' sizes='76x76' href='/apple-touch-icon-76x76.png')
+    link(rel='icon' type='image/png' href='/favicon-16x16.png' sizes='16x16')
+    link(rel='icon' type='image/png' href='/favicon-32x32.png' sizes='32x32')
+    link(rel='manifest' href='/manifest.json')
+    link(rel='mask-icon' href='/safari-pinned-tab.svg' color=color)
+    link(rel='stylesheet' type='text/css' href='/css/app.css' media='all')
+  
+  body
+    #overlay
+    
+    nav
+      h1 weborama.tech
+      
+      ul
+        li: a(href='/') Placeholder
+    
+    block body
+    
+    #footer
+      script(defer src='//media.adrcdn.com/scripts/external/jquery/jquery-2.1.3.min.js')
+      script(defer src='/js/app.js')
+      | v!{version} // Made for 
+      a(href=url.weborama target='_blank') @weborama
+      |  by 
+      a(href=url.bkuri target='_blank') @bkuri
+      |  // 
+      block footer

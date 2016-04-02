@@ -1,7 +1,10 @@
 'use strict'
 
 
+chroma = require('chroma-js')
 {compile} = require('coffee-script')
+{hsv} = require('color-system')
+{invert} = require('./color')
 {memoize} = require('lodash')
 minify = require('express-minify')
 {readFileSync} = require('fs')
@@ -42,10 +45,14 @@ exports.init = (app, version) ->
     try
       {logo, width, height, color, quality, gravity} = req.query
 
+      rgb = chroma(color).rgb()
+
       (require 'gm')("public/img/#{logo}.png")
         .background color
         .gravity gravity
         .extent width, height
+        .border 1, 1
+        .borderColor "\"#{invert(rgb)}\""
         .quality quality
 
         .toBuffer FORMAT[0], (err, buffer) ->
@@ -65,7 +72,7 @@ exports.init = (app, version) ->
 
 
   app.get '/js/app.js', memoize (req, res) ->
-    file = readFileSync("#{__dirname}/private/js/app.coffee", 'ascii')
+    file = readFileSync("#{__dirname}/../private/js/app.coffee", 'ascii')
 
     res.header 'Content-Type', 'application/x-javascript'
     res.send compile(file)
