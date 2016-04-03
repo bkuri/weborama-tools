@@ -19,20 +19,20 @@ input = (index=0) ->
   return $('input', "#wizard-p-#{ index }")
 
 
-onFinished = (event, index) ->
+onFinished = ->
   $overlay.css visibility: 'visible'
   return
 
 
-onInit = (event, index) ->
+onInit = ->
   $formats = $('#formats')
 
   $formats.append $("<option value='#{ f }'>#{ f }</option>") for f in ['2Ad', '3Ad', 'Angel ad', 'APTO', 'Banderole', 'Banner', 'Banner + Layer', 'Billboard', 'Billboard slider', 'Billboard XL', 'Black-Out', 'Careta', 'CornerAd', 'Cross device', 'Cross device billboard', 'Cube', 'Divide Ad', 'Double Sidekick', 'Double Slider', 'Emag', 'Expandable', 'Expandable leaderbord', 'Expandable rectangle', 'Extreme header', 'Fatboy + video', 'Filmstrip', 'Fixed position', 'Fixed scroll banner', 'Flip', 'FloorAd', 'FrameAd', 'FrontKick', 'FullScreen', 'Fullscreen attention layer', 'Fullscreen FloorAd', 'Gecko', 'Group Take Over', 'Halfpage', 'Halfpage + video', 'Header', 'HPTO', 'HPTO layer', 'IN CONTENT', 'in-app header', 'Inarticle', 'Insite', 'Intent message', 'Intent takeover (ITO)', 'Interactive preroll', 'Interscroller', 'Interstitial', 'inview', 'iTV leaderboard', 'Layer', 'Leaderboard', 'Lightbox', 'MastHead', 'Mobile banner', 'Mobile banner + fullscreen layer', 'Mobile double banner', 'Mobile halfpage', 'Mobile halfpage + fullscreen layer', 'Mobile slider', 'MPU', 'MSN custom header', 'Portrait', 'Post Click', 'Preroll', 'Pushdown', 'Rectangle', 'Rectangle to fullscreen', 'Responsive homepage ad', 'Responsive HPTO', 'Roadblock', 'Rubrieks Takeover', 'Screenad', 'Sidebox', 'Sidekick', 'Skin', 'Skybox', 'Skyscraper', 'Slider', 'Slides', 'Slingshot', 'Splashpage', 'SuperExpanding', 'SuperLayer', 'Tablet halfpage', 'Takeover', 'U WallPaper', 'Video banner', 'Video rectangle', 'Video2Halfpage', 'VideoSkin', 'Videostrip', 'VPAID', 'VPAID Ad Bar', 'Vpaid Expand Ad', 'Vpaid Filmstrip', 'Vpaid Freestyle', 'Vpaid Share View', 'WallPaper', 'Windows live', 'WoW preroll', 'Wow Videobox']
 
-  $(window).keydown (e) ->
+  $(window).keydown (event) ->
     prevent = yes
 
-    switch e.which
+    switch event.which
       when 13
         index = $wizard.steps('getCurrentIndex')
         $wizard.steps if (index is steps) then 'finish' else 'next'
@@ -43,7 +43,7 @@ onInit = (event, index) ->
       else
         prevent = no
 
-    e.preventDefault() if prevent
+    event.preventDefault() if prevent
     return
 
   $overlay.css visibility: 'hidden'
@@ -51,7 +51,7 @@ onInit = (event, index) ->
   return
 
 
-onStepChanging = (event, index, newIndex) ->
+onStepChanging = (event, index) ->
   switch index
     when 0
       $input = input(index)
@@ -81,7 +81,7 @@ onStepChanging = (event, index, newIndex) ->
   return yes
 
 
-onStepChanged = (event, index, lastIndex) ->
+onStepChanged = (event, index) ->
   input(index).focus().select()
   return
 
