@@ -65,20 +65,18 @@ onStepChanging = (event, index, newIndex) ->
       return valid
 
     when steps - 1
-
       for s in [1..steps]
-        $("ol > li:nth-child(#{s}) span", $wizard)
-          .text ->
-            $i = input(s - 1)
+        $("ol > li:nth-child(#{s}) span", $wizard).text ->
+          $i = input(s - 1)
 
-            return $i.val() if ($i.length is 1)
-            text = []
+          return $i.val() if ($i.length is 1)
+          text = []
 
-            $i.each ->
-              text.push @value
-              return
+          $i.each ->
+            text.push @value
+            return
 
-            return text.join('x')
+          return text.join('x')
 
   return yes
 
