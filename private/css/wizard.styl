@@ -93,8 +93,9 @@
         font-size 1.1em !important
         input $color_hl
         margin-top 1em
-        padding 0.1em
+        padding 0
         text-align center
+        width 100%
 
         &.error
           background lighten($color_hl, 80%)
@@ -105,16 +106,12 @@
           display inline-block
 
         &[type="range"]
-          range-input($color_hl, 95%, 20px, 4px, $color_hl)
-          width 97%
+          range-input($color_hl, 100%, 20px, 4px, $color_hl)
+          margin-top 0.5em
 
-        &[type="search"]
-          rounded()
-          width 100%
-
+        &[type="search"],
         &[type="text"]
           rounded()
-          width 95%
 
       label
         display inline-block
@@ -258,6 +255,7 @@
 
           &:hover
             text-decoration none
+
 
   > .content
     border-top 1px solid #bbb

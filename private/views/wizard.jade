@@ -9,7 +9,8 @@ block head
 block body
   #wizard.vertical
     h1 Name
-    .content Enter a name for the campaign:
+    .content
+      span Enter a name for the campaign:
       input(
         name="name"
         pattern="[a-zA-Z-0-9_]+"
@@ -20,7 +21,8 @@ block body
       )
     
     h1 Format
-    .content Enter the format:
+    .content
+      span Enter the format:
       datalist#formats
       
       input(
@@ -56,7 +58,8 @@ block body
       )
     
     h1 Download
-    .content Summary
+    .content
+      span Summary
       ol
 
 
