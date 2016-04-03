@@ -1,0 +1,282 @@
+@require mixins
+@require common
+
+
+.tabcontrol, .wizard
+  display block
+  overflow hidden
+  width 100%
+
+  > .steps .current-info
+    position absolute
+    left -999em
+
+
+  > .content > .title
+    position absolute
+    left -999em
+
+  a
+    outline 0
+
+  ul
+    list-style none !important
+    margin 0
+    padding 0
+
+    > li
+      display block
+      padding 0
+
+
+.wizard
+  center()
+  right 12.5%
+  top 25%
+  width 45rem
+
+  &.vertical
+    > .steps
+      width 20%
+
+      > ul > li
+        width 100%
+
+    > .actions > ul
+      width 100%
+
+      > li
+        width 50%
+
+  > .actions
+    float right
+    width 39%
+
+    > ul
+      display inline-block
+      text-align right
+
+  > .content
+    background $color_bg
+    display block
+    margin 0 0 0.5em 0
+    min-height 35em
+    overflow hidden
+    position relative
+    rounded()
+    shadow()
+    width auto
+
+    > .body
+      font-family 'Fjalla One', sans-serif
+      font-size 4rem
+      float left
+      padding 5%
+      position absolute
+      size 90%
+
+      ul
+        list-style disc !important
+
+        > li
+          display list-item
+
+      > iframe
+        border 0 none
+        height 100%
+        width 100%
+
+      input
+        border 1px solid $color_bg
+        display block
+        font-family Roboto, sans-serif !important
+        font-size 1.1em !important
+        input $color_hl
+        margin-top 1em
+        padding 0.1em
+        text-align center
+
+        &.error
+          background lighten($color_hl, 80%)
+          border 1px solid lighten($color_hl, 55%)
+          color $color_hl
+
+        &[type="checkbox"]
+          display inline-block
+
+        &[type="range"]
+          range-input($color_hl, 95%, 20px, 4px, $color_hl)
+          width 97%
+
+        &[type="search"]
+          rounded()
+          width 100%
+
+        &[type="text"]
+          rounded()
+          width 95%
+
+      label
+        display inline-block
+        margin-top 1em
+
+        &.error
+          color $color_hl
+          display inline-block
+          margin-left 1.5em
+
+      ol
+        margin-top 1em
+
+      span
+        display block
+
+        &.red
+          color $color_hl
+          display inline
+
+
+  > .actions
+    a
+      &, &:active, &:hover
+        display block
+        margin 0
+        padding 0.5em
+        rounded()
+        text-decoration none
+
+    li
+      &:first-child a
+        margin-right 0.25em
+
+      &:not(:first-child) a
+        margin-left 0.25em
+
+      &:not(.disabled):last-child a
+        background-color orange
+        color black
+
+      &:not(.disabled):not(:last-child) a
+        background-color $color_hl
+        color #fff
+
+      &.disabled a
+        &, &:active, &:hover
+          background-color lighten($color_hl, 80%) !important
+          color black !important
+
+
+  > .steps
+    display block
+    position relative
+    shadow()
+    width 100%
+
+    > ul > li
+      width 25%
+
+    a
+      &, &:active, &:hover
+        display block
+        margin 0 0.5em 0.5em 0
+        padding 0.5em
+        rounded()
+        text-decoration none
+        width auto
+
+    .current a
+      &, &:active, &:hover
+        background $color_hl
+        color $color_bg
+        cursor default
+
+    .disabled a
+      &, &:active, &:hover
+        background lighten($color_hl, 90%)
+        color black
+        cursor default
+
+    .done a
+      &, &:active, &:hover
+        background lighten($color_hl, 80%)
+        color black
+
+    .error a
+      &, &:active, &:hover
+        background $color_hl
+        color $color_bg
+
+    .number
+      font-weight bold
+
+  > .actions > ul > li,
+  > .steps > ul > li
+    float left
+
+
+.tabcontrol
+  > .steps
+    display block
+    position relative
+    width 100%
+
+    > ul
+      margin 6px 0 0 0
+      position relative
+      top 1px
+      z-index 1
+
+      > li
+        border-top-left-radius 5px
+        border-top-right-radius 5px
+        float left
+        margin 5px 2px 0 0
+        padding 1px
+
+        &:hover
+          background $color_bg
+          border 1px solid #bbb
+          padding 0
+
+        &.current
+          background $color_bg
+          border 1px solid #bbb
+          border-bottom 0 none
+          margin-top 0
+          padding 0 0 1px 0
+
+          > a
+            padding 15px 30px 10px 30px
+
+        > a
+          border 0 none
+          color #5f5f5f
+          display inline-block
+          margin 0
+          padding 10px 30px
+          text-decoration none
+
+          &:hover
+            text-decoration none
+
+  > .content
+    border-top 1px solid #bbb
+    display inline-block
+    height 35em
+    overflow hidden
+    padding-top 20px
+    position relative
+    width 100%
+
+    > .body
+      float left
+      height 95%
+      padding 2.5%
+      position absolute
+      width 95%
+
+      ul
+        list-style disc !important
+
+        > li
+          display list-item

@@ -1,0 +1,66 @@
+extends ./layout
+
+
+block head
+  link(rel='stylesheet' type='text/css' href='/css/wizard.css')
+  link(rel='stylesheet' type='text/css' href=url.fonts)
+
+
+block body
+  #wizard.vertical
+    h1 Name
+    .content Enter a name for the campaign:
+      input(
+        name="name"
+        pattern="[a-zA-Z-0-9_]+"
+        required
+        title="Letters, numbers and underscores accepted"
+        type="text"
+        value=""
+      )
+    
+    h1 Format
+    .content Enter the format:
+      datalist#formats
+      
+      input(
+        list='formats'
+        name='format'
+        required
+        type='search'
+        value=''
+      )
+
+    h1 Size
+    .content
+      span Enter dimensions (in pixels):
+      
+      label(for='width') width
+      input(
+        id='width'
+        type='range'
+        min='25'
+        max='1200'
+        name='width'
+        step='1'
+      )
+
+      label(for='height') weight
+      input(
+        id='height'
+        type='range'
+        min='25'
+        max='800'
+        name='height'
+        step='1'
+      )
+    
+    h1 Download
+    .content Summary
+      ol
+
+
+block footer
+  script(defer src='/js/steps.js')
+  script(defer src='/js/wizard.js')
+  span#hits(data-hits=hits) !{hits} templates generated

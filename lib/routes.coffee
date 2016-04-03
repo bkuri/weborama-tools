@@ -7,36 +7,38 @@ gm = require('gm')
 {invert} = require('./color')
 {memoize} = require('lodash')
 minify = require('express-minify')
-{readFileSync, writeFile} = require('fs')
+{readFileSync} = require('fs')
 ref = require('redis').createClient()
 
-FORMAT = ['JPG', 'image/jpeg']
 
-config =
+CONFIG =
   bcolor: '#dcdcdc'
   height: 180
   quality: 85
   width: 960
 
   url:
-    bkuri: 'https://twitter.com/bkuri'
-    colors: 'http://www.graphicsmagick.org/color.html'
+    bkuri: '//twitter.com/bkuri'
+    colors: '//www.graphicsmagick.org/color.html'
+    fonts: '//fonts.googleapis.com/css?family=Fjalla+One|Roboto'
     logos: '/img/logos.jpg'
-    weborama: 'https://twitter.com/weborama'
+    weborama: '//twitter.com/weborama'
+
+FORMAT = ['JPG', 'image/jpeg']
 
 
 exports.init = (app, version) ->
   app.get '/placeholder', (req, res) ->
     ref.get 'hits', (err, hits) ->
       title = 'Placeholder'
-      res.render 'placeholder', Object.assign(config, {hits, title, version})
+      res.render 'placeholder', Object.assign(CONFIG, {hits, title, version})
       return
     return
 
 
   app.get '/', (req, res) ->
     title = 'New template'
-    res.render 'bundle', Object.assign(config, hits: 0, {title, version})
+    res.render 'wizard', Object.assign(CONFIG, hits: 0, {title, version})
     return
 
 
@@ -63,25 +65,34 @@ exports.init = (app, version) ->
           return
 
     catch err
-      res.status(400).send("Bad Request\n#{err}\n#{JSON.stringify req.query}")
+      res.status(400).send "Bad Request\n#{err}\n#{JSON.stringify req.query}"
 
     return
 
 
   app.get '/api/zip', (req, res) ->
+    data = {}
     zip = new JSZip()
     {folder} = req.query
 
-    data = {}
     zip.folder(folder).load(data)
     res.set 'Content-Type', 'application/zip'
     res.send zip.generate(type: 'nodebuffer')
     return
 
 
-  app.get '/js/app.js', memoize (req, res) ->
-    file = readFileSync("#{__dirname}/../private/js/app.coffee", 'ascii')
+  app.get '/js/:script.js', memoize (req, res) ->
+    {script} = req.params
+
+    read = (what) ->
+      file = readFileSync("#{__dirname}/../#{what}", 'ascii')
+      return compile(file) if what.match /\.coffee$/i
+      return file
 
     res.header 'Content-Type', 'application/x-javascript'
-    res.send compile(file)
+
+    res.send read switch script
+      when 'steps' then 'node_modules/jquery-steps/build/jquery.steps.min.js'
+      else "private/js/#{script}.coffee"
+
     return

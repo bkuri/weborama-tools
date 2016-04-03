@@ -1,6 +1,6 @@
 doctype html
 
-- color = '#930821'
+- color = '#AE0026'
 
 html
   head
@@ -18,7 +18,7 @@ html
     link(rel='icon' type='image/png' href='/favicon-32x32.png' sizes='32x32')
     link(rel='manifest' href='/manifest.json')
     link(rel='mask-icon' href='/safari-pinned-tab.svg' color=color)
-    link(rel='stylesheet' type='text/css' href='/css/app.css' media='all')
+    block head
   
   body
     #overlay
@@ -27,14 +27,13 @@ html
       h1 weborama.tech
       
       ul
-        li: a(href='/') Placeholder
-        li: a(href='/bundle') Template
+        li: a(href='/') Template
+        li: a(href='/placeholder') Placeholder
     
     block body
     
     #footer
       script(defer src='//media.adrcdn.com/scripts/external/jquery/jquery-2.1.3.min.js')
-      script(defer src='/js/app.js')
       | v!{version} // Made for 
       a(href=url.weborama target='_blank') @weborama
       |  by 

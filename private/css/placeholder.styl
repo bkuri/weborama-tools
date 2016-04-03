@@ -1,46 +1,13 @@
-$color_hl = #AE0026
-$color_bg = ghostwhite
-$radius = 4px
-global-reset()
-
-
-center()
-  bottom 0
-  left 0
-  margin auto
-  overflow auto
-  position absolute
-  right 0
-  top 0
-
-
-font(size='smaller')
-  font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
-  font-size size
-
-
-::selection
-  background $color_hl
-  color $color_bg
-
-
-#footer
-  bottom 10px
-  clear both
-  color #999
-  font-size 85%
-  margin 0
-  position absolute
-  text-align center
-  width 100%
+@require mixins
+@require common
 
 
 #form_container
   background $color_bg
-  border-radius $radius
-  box-shadow 0 0 200px 2px #000
   center()
   height 520px
+  rounded()
+  shadow()
   text-align left
   width 420px
 
@@ -53,13 +20,7 @@ font(size='smaller')
 
 
 #overlay
-  background-color rgba(0,0,0,0.9)
-  center()
-  z-index 1000
   visibility hidden
-
-  img
-    center()
 
 
 #reset
@@ -70,21 +31,7 @@ font(size='smaller')
 
 
 a
-  border-bottom 1px dotted #999
-  color #999
-  text-decoration none
-
-  &:focus, &:hover
-    color $color_hl
-
-
-body
-  background-color #111
-  background-image url(/img/bg.png)
-  background-repeat repeat
-  cursor default
-  font()
-  overflow hidden
+  link()
 
 
 form
@@ -120,7 +67,7 @@ img
 
 
 input
-  border-radius $radius
+  rounded()
 
   &[type=range]
     range-input($color_hl, 50%, 15px, 2px, $color_hl)
@@ -146,19 +93,6 @@ label
   line-height 1.4
   padding 0 0 1px
 
-
-nav
-  nav 1, $color_hl, $color_bg, true
-
-  a:hover
-    color $color_bg !important
-
-  h1
-    font(1.5em)
-    padding 12px
-
-  ul
-    padding 15px 0 13px 0
 
 select
   input $color_hl

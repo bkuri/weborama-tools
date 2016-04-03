@@ -1,5 +1,10 @@
 extends ./layout
 
+
+block head
+  link(rel='stylesheet' type='text/css' href='/css/placeholder.css' media='all')
+
+
 block body
   #form_container
     h1= title
@@ -97,6 +102,7 @@ block body
         li.buttons
           input(type='submit' value='Generate')
 
+
 block footer
-    span#hits(data-hits=hits) !{hits}
-    |  unique images generated
+  script(defer src='/js/placeholder.js')
+  span#hits(data-hits=hits) !{hits} unique images generated

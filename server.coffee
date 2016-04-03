@@ -19,9 +19,11 @@ compile = (str, path) ->
     .set 'compress', yes
     .use axis()
 
+###
 express.static.mime.define
   'text/coffeescript': ['coffee']
   'text/stylus': ['styl']
+###
 
 app.use (req, res, next) ->
   if (req.url is '/') or req.url.match(/(css|ico|js|json|png|svg|xml)$/)
