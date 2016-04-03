@@ -6,8 +6,22 @@ block body
       a#reset(href='#')
         img(src='/img/reset.png' width='21' height='22')
 
-    form(method='get' action='/api/bundle')
+    form(method='get' action='/api/placeholder')
       ul
+        li
+          label(for='e1') Logo
+
+          select#e1(name='logo')
+            option(value='logo1') Weborama
+            option(value='logo2') WARM 1
+            option(value='logo3') WARM 2
+            option(value='logo4') Icon
+
+          p: small
+            | Available logos can be found
+            a#logos(href=url.logos)  here
+            | .
+
         li
           label(for='e2') Width (px)
 
@@ -20,7 +34,7 @@ block body
             value=width
           )
 
-          p: small Total banner width in pixels.
+          p: small Width of the background rectangle in pixels.
 
         li
           label(for='e3') Height (px)
@@ -34,16 +48,16 @@ block body
             value=height
           )
 
-          p: small Total banner height in pixels.
+          p: small Height of the background rectangle in pixels.
 
         li
           label(for='e4') Background color
 
           input#e4.text(
             maxlength='15'
-            name='color'
+            name='bcolor'
             type='text'
-            value=color
+            value=bcolor
           )
             
           p: small

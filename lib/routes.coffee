@@ -3,22 +3,20 @@
 
 {compile} = require('coffee-script')
 JSZip = require('node-zip')
+gm = require('gm')
+{invert} = require('./color')
 {memoize} = require('lodash')
 minify = require('express-minify')
 {readFileSync, writeFile} = require('fs')
 ref = require('redis').createClient()
 
-COLOR = '#DCDCDC'
 FORMAT = ['JPG', 'image/jpeg']
-HEIGHT = 180
-QUALITY = 85
-WIDTH = 960
 
-locals =
-  color: COLOR
-  height: HEIGHT
-  quality: QUALITY
-  width: WIDTH
+config =
+  bcolor: '#dcdcdc'
+  height: 180
+  quality: 85
+  width: 960
 
   url:
     bkuri: 'https://twitter.com/bkuri'
@@ -28,28 +26,30 @@ locals =
 
 
 exports.init = (app, version) ->
-  app.get '/', (req, res) ->
+  app.get '/placeholder', (req, res) ->
     ref.get 'hits', (err, hits) ->
       title = 'Placeholder'
-      res.render 'placeholder', Object.assign({hits, title, version}, locals)
+      res.render 'placeholder', Object.assign(config, {hits, title, version})
       return
     return
 
 
-  app.get '/bundle', (req, res) ->
+  app.get '/', (req, res) ->
     title = 'New template'
-    res.render 'bundle', Object.assign({title, version}, locals)
+    res.render 'bundle', Object.assign(config, hits: 0, {title, version})
     return
 
 
   app.get '/api/placeholder', (req, res) ->
     try
-      {logo, width, height, color, quality, gravity} = req.query
+      {logo, width, height, bcolor, quality, gravity} = req.query
 
-      (require 'gm')("public/img/#{logo}.png")
-        .background color
+      gm("public/img/#{logo}.png")
+        .background bcolor
         .gravity gravity
-        .extent width, height
+        .extent (width - 4), (height - 4)
+        .borderColor invert(bcolor)
+        .border 2, 2
         .quality quality
 
         .toBuffer FORMAT[0], (err, buffer) ->
@@ -60,10 +60,10 @@ exports.init = (app, version) ->
           ref.incr 'hits'
           res.set 'Content-Type', FORMAT[1]
           res.send buffer
+          return
 
     catch err
-      console.error err
-      res.status(400).send("Bad Request\n#{JSON.stringify req.query}")
+      res.status(400).send("Bad Request\n#{err}\n#{JSON.stringify req.query}")
 
     return
 
@@ -80,7 +80,7 @@ exports.init = (app, version) ->
 
 
   app.get '/js/app.js', memoize (req, res) ->
-    file = readFileSync("#{__dirname}/private/js/app.coffee", 'ascii')
+    file = readFileSync("#{__dirname}/../private/js/app.coffee", 'ascii')
 
     res.header 'Content-Type', 'application/x-javascript'
     res.send compile(file)
