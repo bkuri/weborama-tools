@@ -9,9 +9,11 @@ block head
 block overlay
   .status Loading...
 
+
 block body
   #wizard
     h1 Name
+
     .content
       span Enter a name for the campaign:
       input(
@@ -24,9 +26,15 @@ block body
       )
     
     h1 Format
+
     .content
       span Enter the format:
+
+      - formats = ['2Ad', '3Ad', 'Angel ad', 'APTO', 'Banderole', 'Banner', 'Banner + Layer', 'Billboard', 'Billboard slider', 'Billboard XL', 'Black-Out', 'Careta', 'CornerAd', 'Cross device', 'Cross device billboard', 'Cube', 'Divide Ad', 'Double Sidekick', 'Double Slider', 'Emag', 'Expandable', 'Expandable leaderbord', 'Expandable rectangle', 'Extreme header', 'Fatboy + video', 'Filmstrip', 'Fixed position', 'Fixed scroll banner', 'Flip', 'FloorAd', 'FrameAd', 'FrontKick', 'FullScreen', 'Fullscreen attention layer', 'Fullscreen FloorAd', 'Gecko', 'Group Take Over', 'Halfpage', 'Halfpage + video', 'Header', 'HPTO', 'HPTO layer', 'IN CONTENT', 'in-app header', 'Inarticle', 'Insite', 'Intent message', 'Intent takeover (ITO)', 'Interactive preroll', 'Interscroller', 'Interstitial', 'inview', 'iTV leaderboard', 'Layer', 'Leaderboard', 'Lightbox', 'MastHead', 'Mobile banner', 'Mobile banner + fullscreen layer', 'Mobile double banner', 'Mobile halfpage', 'Mobile halfpage + fullscreen layer', 'Mobile slider', 'MPU', 'MSN custom header', 'Portrait', 'Post Click', 'Preroll', 'Pushdown', 'Rectangle', 'Rectangle to fullscreen', 'Responsive homepage ad', 'Responsive HPTO', 'Roadblock', 'Rubrieks Takeover', 'Screenad', 'Sidebox', 'Sidekick', 'Skin', 'Skybox', 'Skyscraper', 'Slider', 'Slides', 'Slingshot', 'Splashpage', 'SuperExpanding', 'SuperLayer', 'Tablet halfpage', 'Takeover', 'U WallPaper', 'Video banner', 'Video rectangle', 'Video2Halfpage', 'VideoSkin', 'Videostrip', 'VPAID', 'VPAID Ad Bar', 'Vpaid Expand Ad', 'Vpaid Filmstrip', 'Vpaid Freestyle', 'Vpaid Share View', 'WallPaper', 'Windows live', 'WoW preroll', 'Wow Videobox']
+
       datalist#formats
+        each format in formats
+          option(value=format)= format
       
       input(
         list='formats'
@@ -38,6 +46,7 @@ block body
       )
 
     h1 Size
+
     .content
       span Enter dimensions:
       label(for='width') width
@@ -52,6 +61,7 @@ block body
       )
 
       label(for='height') weight
+
       input(
         id='height'
         type='range'
@@ -62,6 +72,7 @@ block body
       )
     
     h1 Download
+
     .content
       span Summary
       ol
