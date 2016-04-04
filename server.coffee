@@ -2,6 +2,7 @@
 'use strict'
 
 
+autoprefixer = require('autoprefixer-stylus')
 axis = require('axis')
 compression = require('compression')
 express = require('express')
@@ -36,6 +37,7 @@ compile = (str, path) ->
     .set 'filename', path
     .set 'compress', yes
     .use axis()
+    .use autoprefixer()
 
 
 app.set 'views', "#{__dirname}/private/views"
