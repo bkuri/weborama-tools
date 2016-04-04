@@ -4,7 +4,7 @@
 JSZip = require('node-zip')
 
 
-exports.init = (app, config, ref, version) ->
+exports.init = (app, config, redis, version) ->
   app.get '/api/bundle', (req, res) ->
     data = {}
     zip = new JSZip()

@@ -6,7 +6,7 @@
 {readFileSync} = require('fs')
 
 
-exports.init = (app, config, ref, version) ->
+exports.init = (app, config, redis, version) ->
   app.get '/', (req, res) ->
     res.redirect '/wizard'
     return

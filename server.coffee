@@ -8,7 +8,7 @@ express = require('express')
 main = require('./lib/main')
 minify = require('express-minify')
 placeholder = require('./lib/placeholder')
-ref = require('redis').createClient()
+redis = require('redis')
 stylus = require('stylus')
 {version} = require('./package.json')
 wizard = require('./lib/wizard')
@@ -56,8 +56,9 @@ app.use compression()
 app.use minify()
 app.use express.static("#{__dirname}/public")
 
-main.init app, CONFIG, ref, version
-placeholder.init app, CONFIG, ref, version
-wizard.init app, CONFIG, ref, version
+redis.createClient()
+main.init app, CONFIG, redis, version
+placeholder.init app, CONFIG, redis, version
+wizard.init app, CONFIG, redis, version
 
 app.listen (process.env.PORT or 8888)

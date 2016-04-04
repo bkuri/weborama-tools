@@ -8,7 +8,7 @@ gm = require('gm')
 FORMAT = ['JPG', 'image/jpeg']
 
 
-exports.init = (app, config, ref, version) ->
+exports.init = (app, config, redis, version) ->
   app.get '/api/placeholder', (req, res) ->
     try
       {bcolor, gravity, height, logo, quality, width} = req.query
@@ -28,7 +28,7 @@ exports.init = (app, config, ref, version) ->
               .send "Internal Server Error\n#{ err }"
             return
 
-          ref.incr 'hits'
+          redis.incr 'hits'
           res.set 'Content-Type', FORMAT[1]
           res.send buffer
           return
@@ -42,7 +42,7 @@ exports.init = (app, config, ref, version) ->
 
 
   app.get '/placeholder', (req, res) ->
-    ref.get 'hits', (err, hits) ->
+    redis.get 'hits', (err, hits) ->
       title = 'Placeholder'
       res.render 'placeholder', Object.assign(config, {hits, title, version})
       return
