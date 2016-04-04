@@ -10,7 +10,7 @@ $range = $('input[type=range]')
 
 $.fn.placeImage = (src) ->
   return $(@)
-    .append $('<img />').attr {src}
+    .append $("<img src='#{ src }' />")
     .css visibility: 'visible'
 
 
@@ -29,7 +29,7 @@ $ ->
 
     $overlay
       .data {params}
-      .placeImage "/api/placeholder?#{params}"
+      .placeImage "/api/placeholder?#{ params }"
 
     e.preventDefault()
     return if (params is last)
@@ -45,8 +45,7 @@ $ ->
 
   $range.on 'change', ->
     $me = $(@)
-
-    $me.prev('label').text("Quality (#{$me.val()}%)")
+    $me.prev('label').text("Quality (#{ $me.val() }%)")
     return
 
 

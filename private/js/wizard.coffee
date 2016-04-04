@@ -66,7 +66,7 @@ onStepChanging = (event, index) ->
 
     when steps - 1
       for s in [1..steps]
-        $("ol > li:nth-child(#{s}) span", $wizard).text ->
+        $("ol > li:nth-child(#{ s }) span", $wizard).text ->
           $i = input(s - 1)
 
           return $i.val() if ($i.length is 1)
