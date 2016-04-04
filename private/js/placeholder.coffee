@@ -2,7 +2,6 @@
 
 
 $form = $('form')
-$hits = $('#hits')
 $logo = $('select[name=logo]')
 $overlay = $('#overlay')
 $range = $('input[type=range]')
@@ -24,6 +23,7 @@ $ ->
 
 
   $form.on 'submit', (event) ->
+    $hits = $('#hits')
     last = $overlay.data('params')
     params = $(@).serialize()
 

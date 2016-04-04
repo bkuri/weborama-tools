@@ -28,7 +28,7 @@ exports.init = (app, config, redis, version) ->
               .send "Internal Server Error\n#{ err }"
             return
 
-          redis.incr 'hits'
+          redis.incr 'images'
           res.set 'Content-Type', FORMAT[1]
           res.send buffer
           return
@@ -42,7 +42,7 @@ exports.init = (app, config, redis, version) ->
 
 
   app.get '/placeholder', (req, res) ->
-    redis.get 'hits', (err, hits) ->
+    redis.get 'images', (err, hits) ->
       res.render 'placeholder', Object.assign(config, title: 'Placeholder', {hits, title, version})
       return
 
