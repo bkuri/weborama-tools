@@ -23,7 +23,7 @@ $ ->
     return
 
 
-  $form.on 'submit', (e) ->
+  $form.on 'submit', (event) ->
     last = $overlay.data('params')
     params = $(@).serialize()
 
@@ -31,7 +31,7 @@ $ ->
       .data {params}
       .placeImage "/api/placeholder?#{ params }"
 
-    e.preventDefault()
+    event.preventDefault()
     return if (params is last)
 
     hits = $hits.data('hits') + 1
@@ -49,17 +49,17 @@ $ ->
     return
 
 
-  $('#logos').on 'click', (e) ->
+  $('#logos').on 'click', (event) ->
     $overlay.placeImage $(@).attr('href')
-    e.preventDefault()
+    event.preventDefault()
     return
 
 
-  $('#reset').on 'click', (e) ->
+  $('#reset').on 'click', (event) ->
     $form.trigger 'reset'
     $range.trigger 'change'
     $logo.focus()
-    e.preventDefault()
+    event.preventDefault()
     return
 
 
