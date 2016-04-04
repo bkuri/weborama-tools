@@ -37,11 +37,9 @@ compile = (str, path) ->
     .set 'compress', yes
     .use axis()
 
-###
-express.static.mime.define
-  'text/coffeescript': ['coffee']
-  'text/stylus': ['styl']
-###
+
+app.set 'views', "#{__dirname}/private/views"
+app.set 'view engine', 'jade'
 
 app.use (req, res, next) ->
   if (req.url is '/') or req.url.match(/(css|ico|js|json|png|svg|xml)$/)
@@ -58,10 +56,8 @@ app.use compression()
 app.use minify()
 app.use express.static("#{__dirname}/public")
 
-app.set 'views', "#{__dirname}/private/views"
-app.set 'view engine', 'jade'
-
 main.init app, CONFIG, ref, version
 placeholder.init app, CONFIG, ref, version
 wizard.init app, CONFIG, ref, version
+
 app.listen (process.env.PORT or 8888)
