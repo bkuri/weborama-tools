@@ -1,11 +1,15 @@
-$color_hl = #AE0026
-$color_bg = ghostwhite
+$color_pri = #AE0026
+$color_sec = ghostwhite
+$stack_fjalla = 'Fjalla One', sans-serif
+$stack_roboto = Roboto, sans-serif
+
+
 global-reset()
 
 
 ::selection
-  background $color_hl
-  color $color_bg
+  background $color_pri
+  color $color_sec
 
 
 #footer
@@ -27,9 +31,6 @@ global-reset()
   center()
   z-index 1000
 
-  img
-    center()
-
 
 body
   background-color #111
@@ -41,13 +42,13 @@ body
 
 
 nav
-  nav 1, $color_hl, $color_bg, true
+  nav 1, $color_pri, $color_sec, true
 
   a
     link()
 
     &:hover
-      color $color_bg !important
+      color $color_sec !important
 
   h1
     font(1.5em)

@@ -2,6 +2,16 @@
 @require common
 
 
+#overlay .status
+  center()
+  color $color_sec
+  display inline-table
+  font $stack_fjalla, 6rem
+  height 12.5%
+  text-align center
+  width 100%
+
+
 .tabcontrol, .wizard
   display block
   overflow hidden
@@ -57,7 +67,7 @@
       text-align right
 
   > .content
-    background $color_bg
+    background $color_sec
     display block
     margin 0 0 0.5em 0
     min-height 35em
@@ -68,8 +78,7 @@
     width auto
 
     > .body
-      font-family 'Fjalla One', sans-serif
-      font-size 4rem
+      font $stack_fjalla, 4rem
       float left
       padding 5%
       position absolute
@@ -87,26 +96,25 @@
         width 100%
 
       input
-        border 1px solid $color_bg
+        border 1px solid $color_sec
         display block
-        font-family Roboto, sans-serif !important
-        font-size 1.1em !important
-        input $color_hl
+        font $stack_roboto, 1.1rem !important
+        input $color_pri
         margin-top 1em
         padding 0
         text-align center
         width 100%
 
         &.error
-          background lighten($color_hl, 80%)
-          border 1px solid lighten($color_hl, 55%)
-          color $color_hl
+          background lighten($color_pri, 80%)
+          border 1px solid lighten($color_pri, 55%)
+          color $color_pri
 
         &[type="checkbox"]
           display inline-block
 
         &[type="range"]
-          range-input($color_hl, 100%, 20px, 4px, $color_hl)
+          range-input($color_pri, 100%, 20px, 4px, $color_pri)
           margin-top 0.5em
 
         &[type="search"],
@@ -118,7 +126,7 @@
         margin-top 1em
 
         &.error
-          color $color_hl
+          color $color_pri
           display inline-block
           margin-left 1.5em
 
@@ -129,7 +137,7 @@
         display block
 
         &.red
-          color $color_hl
+          color $color_pri
           display inline
 
 
@@ -154,12 +162,12 @@
         color black
 
       &:not(.disabled):not(:last-child) a
-        background-color $color_hl
+        background-color $color_pri
         color #fff
 
       &.disabled a
         &, &:active, &:hover
-          background-color lighten($color_hl, 80%) !important
+          background-color lighten($color_pri, 80%) !important
           color black !important
 
 
@@ -183,25 +191,25 @@
 
     .current a
       &, &:active, &:hover
-        background $color_hl
-        color $color_bg
+        background $color_pri
+        color $color_sec
         cursor default
 
     .disabled a
       &, &:active, &:hover
-        background lighten($color_hl, 90%)
+        background lighten($color_pri, 90%)
         color black
         cursor default
 
     .done a
       &, &:active, &:hover
-        background lighten($color_hl, 80%)
+        background lighten($color_pri, 80%)
         color black
 
     .error a
       &, &:active, &:hover
-        background $color_hl
-        color $color_bg
+        background $color_pri
+        color $color_sec
 
     .number
       font-weight bold
@@ -231,12 +239,12 @@
         padding 1px
 
         &:hover
-          background $color_bg
+          background $color_sec
           border 1px solid #bbb
           padding 0
 
         &.current
-          background $color_bg
+          background $color_sec
           border 1px solid #bbb
           border-bottom 0 none
           margin-top 0

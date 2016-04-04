@@ -3,7 +3,7 @@
 
 
 #form_container
-  background $color_bg
+  background $color_sec
   center()
   height 520px
   rounded()
@@ -12,8 +12,8 @@
   width 420px
 
   h1
-    background-color $color_hl
-    color $color_bg
+    background-color $color_pri
+    color $color_sec
     font(1.5em)
     margin 0
     padding 10px 20px
@@ -21,6 +21,9 @@
 
 #overlay
   visibility hidden
+
+  img
+    center()
 
 
 #reset
@@ -70,7 +73,7 @@ input
   rounded()
 
   &[type=range]
-    range-input($color_hl, 50%, 15px, 2px, $color_hl)
+    range-input($color_pri, 50%, 15px, 2px, $color_pri)
     width 51%
 
   &[type=submit]
@@ -78,7 +81,7 @@ input
     overflow visible
 
   &.text
-    input $color_hl
+    input $color_pri
     margin 0
     padding 3px 0 1px 4px
     width 50%
@@ -95,12 +98,12 @@ label
 
 
 select
-  input $color_hl
+  input $color_pri
   padding 2px 0 0 0
   width 51%
 
 
 .buttons
   input
-    button $color_hl, 'large'
+    button $color_pri, 'large'
     width 100%

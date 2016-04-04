@@ -1,16 +1,16 @@
-center()
-  bottom 0
-  left 0
-  margin auto
-  overflow auto
-  position absolute
-  right 0
-  top 0
+center(b=0, l=0, m=auto, o=auto, p=absolute, r=0, t=0)
+  bottom b
+  left l
+  margin m
+  overflow o
+  position p
+  right r
+  top t
 
 
-font(size='smaller')
-  font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
-  font-size size
+font(stack=$lucida-grande, size='smaller')
+  font-family stack
+  fs size
 
 
 link()
@@ -19,7 +19,7 @@ link()
   text-decoration none
 
   &:focus, &:hover
-    color $color_hl
+    color $color_pri
 
 
 rounded()
