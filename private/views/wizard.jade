@@ -7,7 +7,7 @@ block head
 
 
 block body
-  #wizard.vertical
+  #wizard
     h1 Name
     .content
       span Enter a name for the campaign:
@@ -28,6 +28,7 @@ block body
       input(
         list='formats'
         name='format'
+        pattern='\w+'
         required
         type='search'
         value=''
@@ -36,8 +37,8 @@ block body
     h1 Size
     .content
       span Enter dimensions (in pixels):
-      
       label(for='width') width
+      
       input(
         id='width'
         type='range'
