@@ -18,17 +18,17 @@ exports.init = (app, config, ref, version) ->
   app.get '/js/:script.js', memoize (req, res) ->
     {script} = req.params
 
-    read = (what) ->
+    read = (script) ->
+      what = switch script
+        when 'steps' then 'node_modules/jquery-steps/build/jquery.steps.min.js'
+        else "private/js/#{ script }.coffee"
+
       file = readFileSync("#{ __dirname }/../#{ what }", 'ascii')
       return compile(file) if what.match /\.coffee$/i
       return file
 
     res.header 'Content-Type', 'application/x-javascript'
-
-    res.send read switch script
-      when 'steps' then 'node_modules/jquery-steps/build/jquery.steps.min.js'
-      else "private/js/#{ script }.coffee"
-
+    res.send read(script)
     return
 
 
