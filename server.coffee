@@ -5,10 +5,28 @@
 axis = require('axis')
 compression = require('compression')
 express = require('express')
+main = require('./lib/main')
 minify = require('express-minify')
-routes = require('./lib/routes')
+placeholder = require('./lib/placeholder')
+ref = require('redis').createClient()
 stylus = require('stylus')
 {version} = require('./package.json')
+wizard = require('./lib/wizard')
+
+
+CONFIG =
+  bcolor: '#dcdcdc'
+  height: 180
+  quality: 85
+  width: 960
+
+  url:
+    bkuri: '//twitter.com/bkuri'
+    colors: '//www.graphicsmagick.org/color.html'
+    fonts: '//fonts.googleapis.com/css?family=Fjalla+One|Roboto'
+    logos: '/img/logos.jpg'
+    weborama: '//twitter.com/weborama'
+
 
 app = express()
 
@@ -27,7 +45,7 @@ express.static.mime.define
 
 app.use (req, res, next) ->
   if (req.url is '/') or req.url.match(/(css|ico|js|json|png|svg|xml)$/)
-    res.setHeader('Cache-Control', 'public, max-age=86400')
+    res.setHeader 'Cache-Control', 'public, max-age=86400'
 
   next()
   return
@@ -43,5 +61,7 @@ app.use express.static("#{__dirname}/public")
 app.set 'views', "#{__dirname}/private/views"
 app.set 'view engine', 'jade'
 
-routes.init(app, version)
+main.init app, CONFIG, ref, version
+placeholder.init app, CONFIG, ref, version
+wizard.init app, CONFIG, ref, version
 app.listen (process.env.PORT or 8888)
