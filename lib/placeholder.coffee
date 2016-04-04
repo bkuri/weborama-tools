@@ -5,6 +5,9 @@ gm = require('gm')
 {invert} = require('./color')
 
 
+FORMAT = ['JPG', 'image/jpeg']
+
+
 exports.init = (app, config, ref, version) ->
   app.get '/api/placeholder', (req, res) ->
     try

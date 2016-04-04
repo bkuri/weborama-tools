@@ -6,9 +6,6 @@
 {readFileSync} = require('fs')
 
 
-FORMAT = ['JPG', 'image/jpeg']
-
-
 exports.init = (app, config, ref, version) ->
   app.get '/', (req, res) ->
     res.redirect '/wizard'
