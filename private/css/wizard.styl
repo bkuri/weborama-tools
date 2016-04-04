@@ -7,7 +7,7 @@
   color $color_sec
   display inline-table
   font $stack_fjalla, 6rem
-  height 12.5%
+  height 20%
   text-align center
   width 100%
 
@@ -20,7 +20,6 @@
   > .steps .current-info
     position absolute
     left -999em
-
 
   > .content > .title
     position absolute
@@ -96,10 +95,10 @@
         width 100%
 
       input
+        input $color_pri
         border 1px solid $color_sec
         display block
-        font $stack_roboto, 1.1rem !important
-        input $color_pri
+        font $stack_roboto, 1.1em
         margin-top 1em
         padding 0
         text-align center
@@ -140,7 +139,6 @@
           color $color_pri
           display inline
 
-
   > .actions
     a
       &, &:active, &:hover
@@ -169,7 +167,6 @@
         &, &:active, &:hover
           background-color lighten($color_pri, 80%) !important
           color black !important
-
 
   > .steps
     display block
@@ -263,7 +260,6 @@
 
           &:hover
             text-decoration none
-
 
   > .content
     border-top 1px solid #bbb
