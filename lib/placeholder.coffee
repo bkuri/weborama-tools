@@ -43,8 +43,7 @@ exports.init = (app, config, redis, version) ->
 
   app.get '/placeholder', (req, res) ->
     redis.get 'hits', (err, hits) ->
-      title = 'Placeholder'
-      res.render 'placeholder', Object.assign(config, {hits, title, version})
+      res.render 'placeholder', Object.assign(config, title: 'Placeholder', {hits, title, version})
       return
 
     return
