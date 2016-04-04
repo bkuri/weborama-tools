@@ -22,6 +22,12 @@ input = (index=0) ->
 
 onFinished = ->
   $overlay.css visibility: 'visible'
+
+  setTimeout ->
+    window.location.href = '/'
+    return
+  , 3000
+  
   return
 
 

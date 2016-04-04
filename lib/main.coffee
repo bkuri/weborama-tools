@@ -10,6 +10,11 @@ FORMAT = ['JPG', 'image/jpeg']
 
 
 exports.init = (app, config, ref, version) ->
+  app.get '/', (req, res) ->
+    res.redirect '/wizard'
+    return
+
+
   app.get '/js/:script.js', memoize (req, res) ->
     {script} = req.params
 
