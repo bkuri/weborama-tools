@@ -105,6 +105,11 @@
           range-input($color_pri, 100%, 20px, 4px, $color_pri)
           margin-top 0.5em
 
+          &[disabled]
+            pointer-events none
+            range-input(#999, 100%, 20px, 4px, #999)
+            margin-top 0.5em
+
         &[type="search"],
         &[type="text"]
           rounded()

@@ -54,7 +54,9 @@ onInit = ->
   return
 
 
-onStepChanging = (event, index) ->
+onStepChanging = (event, index, inext) ->
+  return yes unless (inext > index)
+
   switch index
     when 0
       $input = input(index)
@@ -63,6 +65,14 @@ onStepChanging = (event, index) ->
       setTimeout (-> $input.focus().select()), 100 unless valid
       $input.toggleClass 'error', (not valid)
       return valid
+
+    when 1
+      disabled = input(index).val().match(/^Responsive/i)
+
+      input(inext).first()
+        .prop {disabled}
+        .val if disabled then 1210 else 600
+        .trigger 'change'
 
     when steps - 1
       for s in [1..steps]
@@ -86,9 +96,12 @@ onStepChanged = (event, index) ->
   return
 
 
-range = ->
+range = (unit='px') ->
   $me = $(@)
-  $me.prev('label').text "#{ $me.attr 'name' }: #{ $me.val() }px"
+
+  return if $me.hasClass('disabled')
+  [value, units] = if (@value > 1200) then [100, '%'] else [@value, 'px']
+  $me.prev('label').text "#{ $me.attr 'name' }: #{ value }#{ units }"
   return
 
 
