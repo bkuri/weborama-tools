@@ -15,6 +15,7 @@
     "lodash": "^4.6.1",
     "node-zip": "^1.1.1",
     "redis": "^2.5.3",
+    "rupture": "^0.6.1",
     "stylus": "^0.54.2"
   },
   "description": "Tools for weborama creatives",
@@ -30,5 +31,5 @@
     "start": "node_modules/coffee-script/bin/coffee server.coffee",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.1.24"
+  "version": "0.1.25"
 }

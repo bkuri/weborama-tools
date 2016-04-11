@@ -10,6 +10,7 @@ main = require('./lib/main')
 minify = require('express-minify')
 placeholder = require('./lib/placeholder')
 redis = require('redis').createClient()
+rupture = require('rupture')
 stylus = require('stylus')
 {version} = require('./package.json')
 wizard = require('./lib/wizard')
@@ -37,6 +38,7 @@ compile = (str, path) ->
     .set 'filename', path
     .set 'compress', yes
     .use axis()
+    .use rupture()
     .use autoprefixer()
 
 

@@ -70,18 +70,15 @@
     shadow()
     width auto
 
+    +below($bigger)
+      min-height 25em
+
     > .body
       font $stack_fjalla, 3.5rem
       float left
       padding 5%
       position absolute
       size 90%
-
-      ul
-        list-style disc !important
-
-        > li
-          display list-item
 
       input
         input $color_pri
@@ -118,6 +115,9 @@
         display inline-block
         margin-top 1em
 
+        +below($bigger)
+          margin-top 0.5em
+
         &.error
           color $color_pri
           display inline-block
@@ -132,6 +132,12 @@
         &.red
           color $color_pri
           display inline
+
+      ul
+        list-style disc !important
+
+        > li
+          display list-item
 
     > .title
       position absolute
@@ -154,6 +160,9 @@
         rounded()
         text-decoration none
         width auto
+
+        +below($bigger)
+          padding 0.6em 0.5em 0.5em
 
     .current a
       &, &:active, &:hover
